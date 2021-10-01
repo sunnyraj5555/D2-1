@@ -20,6 +20,9 @@
 using namespace std;
 
 
+Block BlockChain[N];
+long BlockChain_size =0;
+
     Block::Block()
     {
         No_of_Transactions_in_Block = 0;

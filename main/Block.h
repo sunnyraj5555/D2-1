@@ -52,4 +52,8 @@ class Block
     long get_transaction_ID_from_block(int i);
 };
 
+
+extern Block BlockChain[N];
+extern long BlockChain_size;
+
 #endif /* BLOCK_H */
