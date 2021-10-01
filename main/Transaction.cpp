@@ -19,3 +19,32 @@
 
 using namespace std;
 
+void Transaction::set_Transaction(string sender, string reciever, long amount, long Transaction_ID)
+    {
+        this->Transaction_ID = Transaction_ID;
+        this->sender  = sender;
+        this->reciever = reciever;
+        this->amount = amount;
+
+        transaction_msg = sender + " sent " + reciever + " amount " + to_string(amount) + " Rs.";
+    }
+    
+    void Transaction::set_transaction_msg(string message)
+    {
+        transaction_msg = message;
+    }
+
+    void Transaction::set_Transaction_ID()
+    {
+        Transaction_ID = Transaction_Ids + 1;
+    }
+    
+    long Transaction::get_Transaction_ID()
+    {
+        return Transaction_ID;
+    }
+
+    string Transaction::get_transaction_msg()
+    {
+        return transaction_msg;
+    }
