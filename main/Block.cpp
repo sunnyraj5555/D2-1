@@ -92,3 +92,15 @@ long BlockChain_size =0;
         return Transactions_in_the_Block[i].get_Transaction_ID();
     }
 
+void intitialise_BlockChain_size()
+{
+    BlockChain_size = 0;
+    create_Genesis_Block();
+}
+
+void create_Genesis_Block()
+{
+    Block b;
+    b.set_Block_Hash( create_block_hash(b) );
+    BlockChain[0] = b; //conitnuing after 10 mins
+}
