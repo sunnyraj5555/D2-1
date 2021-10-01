@@ -23,7 +23,7 @@ using namespace std;
 
 Transaction Ledger[N];
 Transaction Mempool[N];
-stack<int> List_of_Transaction_ID;
+
 long Ledger_size =0;
 long Mempool_size =0;
 long Transaction_Ids =0;
