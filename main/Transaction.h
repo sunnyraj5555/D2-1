@@ -14,6 +14,11 @@ using namespace std;
 #ifndef TRANSACTION_H
 #define TRANSACTION_H
 
+
+//extern stack<int> List_of_Transaction_ID;
+extern long Mempool_size;
+extern long Ledger_size;
+
 class Transaction
 {
     private:
@@ -44,5 +49,8 @@ class Transaction
     string get_transaction_msg();
 };
 
+
+extern Transaction Ledger[N];
+extern Transaction Mempool[N];
 
 #endif /* TRANSACTION_H */
