@@ -18,6 +18,14 @@
 #include "Block.h"
 
 using namespace std;
+#define N 100
+
+Transaction Ledger[N];
+Transaction Mempool[N];
+//stack<int> List_of_Transaction_ID;
+long Ledger_size =0;
+long Mempool_size =0;
+long Transaction_Ids =0;
 
 void Transaction::set_Transaction(string sender, string reciever, long amount, long Transaction_ID)
     {
