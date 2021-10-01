@@ -15,6 +15,7 @@ using namespace std;
 #define BLOCK_H
 
 
+
 class Block
 {
     private:
@@ -52,8 +53,17 @@ class Block
     long get_transaction_ID_from_block(int i);
 };
 
-
 extern Block BlockChain[N];
 extern long BlockChain_size;
+void intitialise_BlockChain_size();
+void create_Genesis_Block();
+string create_block_hash(Block &b);
+void add_Block_to_BlockChain(Block &b);
+
+void mine_block();
+void display_Ledger();
+void display_Blockchain();
+void display_Mempool();
+
 
 #endif /* BLOCK_H */
