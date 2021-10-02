@@ -99,3 +99,36 @@ void create_org(){
         cout<<"Verification Failed. Org not valid."<<endl;
     }
 }
+
+
+void intitialise_OrgList(){
+    
+    Organization org1, org2, org3, org4;
+    
+    org1.set_Org_ID();
+    org1.set_registration_number(2101);
+    org1.set_org_details("Nazareth Hospital", "Prayagraj, Uttar Pradesh", "7393254831");
+    
+    add_org_to_list(org1);
+    
+    org2.set_Org_ID();
+    org2.set_registration_number(1002);
+    org2.set_org_details("Medanta Medicity", "Gurugram, Haryana", "8527690666");
+
+    add_org_to_list(org2);
+    
+    
+    org3.set_Org_ID();
+    org3.set_registration_number(2103);
+    org3.set_org_details("Priti Hospital", "Prayagraj, Uttar Pradesh", "6393283820");
+    
+    add_org_to_list(org3);
+    
+    org4.set_Org_ID();
+    org4.set_registration_number(2103);
+    org4.set_org_details("Lalitha Hospital", "New Delhi, Delhi", "9811898880");
+    
+    add_org_to_list(org4);
+
+}
+
