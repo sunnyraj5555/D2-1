@@ -104,3 +104,15 @@ void create_Genesis_Block()
     b.set_Block_Hash( create_block_hash(b) );
     BlockChain[0] = b; //conitnuing after 10 mins
 }
+
+
+// this function will be encryption / hashing header file where all other functions also exist
+string create_block_hash(Block &b)
+{
+    return "hash1234";
+}
+
+void add_Block_to_BlockChain(Block &b)
+{
+    BlockChain[BlockChain_size -1] = b;
+}
