@@ -172,3 +172,36 @@ void display_Mempool(){
         cout<<endl;
     }
 }
+
+void mine_block(){
+    
+    if(Mempool_size == 0){
+        cout<<"No Blocks to Mine. Mempool is Empty."<<endl;
+        return ;
+    }
+    Block b;
+    
+    b.fill_transactions_in_the_block();
+    b.set_Block_Hash(create_block_hash(b));  //this create_block_hash(Block &b) will be there is another header which will have hashing functions
+    
+    cout<<"Block Mined Successfully."<<endl;
+    
+    add_Block_to_BlockChain(b);
+    
+    cout<<"Block Added to BlockChain Successfully."<<endl;
+    
+    for(int i = 0;i<Mempool_size;i++)
+    {
+        Ledger[i + Ledger_size] = Mempool[i];   // adding these to ledger as they are mined
+    }
+    
+    cout<<"Transactions are added to Ledger."<<endl;
+    
+    Ledger_size = Ledger_size + Mempool_size;   //  updating the Ledger_size
+    Mempool_size = 0;   //  freeing Mempool
+    
+    cout<<"Clearing Mempool"<<endl;
+
+    
+    // delete the block b too at the last
+}
