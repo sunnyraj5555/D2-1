@@ -116,3 +116,32 @@ void add_Block_to_BlockChain(Block &b)
 {
     BlockChain[BlockChain_size -1] = b;
 }
+
+void display_Blockchain(){
+    
+    if(BlockChain_size == 1){
+        cout<<"BlockChain is Empty. No Blocks to Display"<<endl;
+
+    }
+    else{
+        
+        for(int i = 1; i < BlockChain_size; i++){
+    
+            cout<<" ---------------------"<<endl;
+            cout<<"Block ID: " << BlockChain[i].get_BlockNumber()<<endl;
+            cout<<"Previous Block hash: "<<BlockChain[i].get_Previous_Hash()<<endl;
+            cout<<"Current Block hash: "<<BlockChain[i].get_Block_Hash()<<endl;
+            cout<<"Transactions inside the Block: "<<endl;
+            cout<<"{"<<endl;
+    
+            for(int j =0;j<BlockChain[i].get_No_of_Transactions_in_Block();j++){
+                cout<<"\t Transaction No: "<<j+1<<endl;
+                cout<<"\t Transaction ID: "<<BlockChain[i].get_transaction_ID_from_block(j)<<endl;
+                cout<<"\t Transaction Message: "<<BlockChain[i].get_transaction_msg_from_block(j)<<endl;
+                cout<<endl;
+            }
+            cout<<"}"<<endl;
+            cout<<endl;
+        }
+    }
+}
