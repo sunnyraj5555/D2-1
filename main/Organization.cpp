@@ -20,7 +20,10 @@
 using namespace std;
 
 
-void Organization::set_org_details(string org_name, string org_address, string org_phone_number ){
+Organization OrgList[N];
+long OrgList_size = 0;
+
+    void Organization::set_org_details(string org_name, string org_address, string org_phone_number ){
         this->org_name = org_name;
         this->org_address=org_address;
         this->org_phone_number=org_phone_number; 
@@ -55,6 +58,7 @@ void Organization::set_org_details(string org_name, string org_address, string o
     long Organization::get_registration_number(){
         return registration_number;
     }
+
 
 void display_OrgList(){
     if(OrgList_size == 0){
@@ -100,6 +104,11 @@ void create_org(){
     }
 }
 
+// Organization search_org_with_id(long Org_ID){
+//     for(int i =0;i<OrgList_size;i++){
+        
+//     }
+// }
 
 void intitialise_OrgList(){
     
