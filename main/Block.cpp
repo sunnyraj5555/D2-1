@@ -92,6 +92,7 @@ long BlockChain_size =0;
         return Transactions_in_the_Block[i].get_Transaction_ID();
     }
 
+
 void intitialise_BlockChain_size()
 {
     BlockChain_size = 0;
@@ -104,7 +105,6 @@ void create_Genesis_Block()
     b.set_Block_Hash( create_block_hash(b) );
     BlockChain[0] = b; //conitnuing after 10 mins
 }
-
 
 // this function will be encryption / hashing header file where all other functions also exist
 string create_block_hash(Block &b)
@@ -145,34 +145,6 @@ void display_Blockchain(){
         }
     }
 }
-
-
-void display_Ledger(){
-    if(Ledger_size == 0){
-        cout<<"Ledger is Empty."<<endl;
-        return ;
-    }
-    cout<<"Ledger: ----------->"<<endl;
-    for(int i = 0;i<Ledger_size;i++)
-    {
-        cout<<"\t"<<Ledger[i].get_Transaction_ID()<<" : "<<Ledger[i].get_transaction_msg();
-        cout<<endl;
-    }
-}
-
-void display_Mempool(){
-    if(Mempool_size == 0){
-        cout<<"Mempool is Empty."<<endl;
-        return ;
-    }
-    cout<<"Mempool: --------->"<<endl;
-    for(int i = 0;i<Mempool_size;i++)
-    {
-        cout<<"\t"<<Mempool[i].get_Transaction_ID()<<" : "<<Mempool[i].get_transaction_msg();
-        cout<<endl;
-    }
-}
-
 void mine_block(){
     
     if(Mempool_size == 0){
@@ -206,46 +178,73 @@ void mine_block(){
     // delete the block b too at the last
 }
 
-
-
-void admin_main_menu(){
-
-    cout<<endl;
-    cout<<"Welcome ADMIN.! Please select one of the following operations: "<<endl;
-    cout<<"1. Mine a Block "<<endl;
-    cout<<"2. Display BlockChain "<<endl;
-    cout<<"3. Display Ledger "<<endl;
-    cout<<"4. Display Mempool "<<endl;
-    cout<<"5. Donate money "<<endl;
-    int choose;
-    cout<<"\nEnter your choice: ";
-    cin>>choose;
-    cout<<endl;
-    switch(choose){
-        case 1: {
-            mine_block();
-            break;
-        }
-        case 2: {
-            display_Blockchain();
-            break;
-        }
-        case 3: {
-            display_Ledger();
-            break;
-        }
-        case 4: {
-            display_Mempool();
-            break;
-        }
-        case 5: {
-            donate_money_UI("","");
-            break;
-        }
-        default: {
-            cout<<"This feature is currntly being developed."<<endl;
-            break;
-        }
-        
+void display_Ledger(){
+    if(Ledger_size == 0){
+        cout<<"Ledger is Empty."<<endl;
+        return ;
+    }
+    cout<<"Ledger: ----------->"<<endl;
+    for(int i = 0;i<Ledger_size;i++)
+    {
+        cout<<"\t"<<Ledger[i].get_Transaction_ID()<<" : "<<Ledger[i].get_transaction_msg();
+        cout<<endl;
     }
 }
+
+void display_Mempool(){
+    if(Mempool_size == 0){
+        cout<<"Mempool is Empty."<<endl;
+        return ;
+    }
+    cout<<"Mempool: --------->"<<endl;
+    for(int i = 0;i<Mempool_size;i++)
+    {
+        cout<<"\t"<<Mempool[i].get_Transaction_ID()<<" : "<<Mempool[i].get_transaction_msg();
+        cout<<endl;
+    }
+}
+
+
+
+
+// void admin_main_menu(){
+
+//     cout<<endl;
+//     cout<<"Welcome ADMIN.! Please select one of the following operations: "<<endl;
+//     cout<<"1. Mine a Block "<<endl;
+//     cout<<"2. Display BlockChain "<<endl;
+//     cout<<"3. Display Ledger "<<endl;
+//     cout<<"4. Display Mempool "<<endl;
+//     cout<<"5. Donate money "<<endl;
+//     int choose;
+//     cout<<"\nEnter your choice: ";
+//     cin>>choose;
+//     cout<<endl;
+//     switch(choose){
+//         case 1: {
+//             mine_block();
+//             break;
+//         }
+//         case 2: {
+//             display_Blockchain();
+//             break;
+//         }
+//         case 3: {
+//             display_Ledger();
+//             break;
+//         }
+//         case 4: {
+//             display_Mempool();
+//             break;
+//         }
+//         case 5: {
+//             donate_money_UI("","");
+//             break;
+//         }
+//         default: {
+//             cout<<"This feature is currntly being developed."<<endl;
+//             break;
+//         }
+        
+//     }
+// }
