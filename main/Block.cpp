@@ -205,3 +205,47 @@ void mine_block(){
     
     // delete the block b too at the last
 }
+
+
+
+void admin_main_menu(){
+
+    cout<<endl;
+    cout<<"Welcome ADMIN.! Please select one of the following operations: "<<endl;
+    cout<<"1. Mine a Block "<<endl;
+    cout<<"2. Display BlockChain "<<endl;
+    cout<<"3. Display Ledger "<<endl;
+    cout<<"4. Display Mempool "<<endl;
+    cout<<"5. Donate money "<<endl;
+    int choose;
+    cout<<"\nEnter your choice: ";
+    cin>>choose;
+    cout<<endl;
+    switch(choose){
+        case 1: {
+            mine_block();
+            break;
+        }
+        case 2: {
+            display_Blockchain();
+            break;
+        }
+        case 3: {
+            display_Ledger();
+            break;
+        }
+        case 4: {
+            display_Mempool();
+            break;
+        }
+        case 5: {
+            donate_money_UI("","");
+            break;
+        }
+        default: {
+            cout<<"This feature is currntly being developed."<<endl;
+            break;
+        }
+        
+    }
+}
