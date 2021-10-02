@@ -56,6 +56,16 @@ void Organization::set_org_details(string org_name, string org_address, string o
         return registration_number;
     }
 
+void display_OrgList(){
+    if(OrgList_size == 0){
+        cout<<"No Org Found. "<<endl;
+        return ;
+    }
+    for(int i =0;i<OrgList_size;i++){
+        cout<<"\t"<<OrgList[i].get_Org_ID()<<" : "<<OrgList[i].get_org_name()<<" | "<<OrgList[i].get_org_address();
+        cout<<endl;
+    }
+}
 
 void add_org_to_list(Organization &o){
     OrgList[OrgList_size] = o;
