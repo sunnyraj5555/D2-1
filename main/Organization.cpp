@@ -55,3 +55,12 @@ void Organization::set_org_details(string org_name, string org_address, string o
     long Organization::get_registration_number(){
         return registration_number;
     }
+
+
+void add_org_to_list(Organization &o){
+    OrgList[OrgList_size] = o;
+    OrgList_size++;
+    
+    //cout<<"Organization Added successfully."<<endl;
+}
+
