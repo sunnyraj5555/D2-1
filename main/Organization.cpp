@@ -84,3 +84,18 @@ bool verify_org(long Org_ID){
     
     return true;    //just returning true for now
 }
+
+ 
+void create_org(){
+    long registration_number;
+    
+    cout<<"Enter the Organization Registration Num: ";
+    cin>>registration_number;
+    
+    if(verify_org(registration_number)){
+        enter_org_details(registration_number);
+    }
+    else{
+        cout<<"Verification Failed. Org not valid."<<endl;
+    }
+}
