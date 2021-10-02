@@ -74,3 +74,13 @@ void add_org_to_list(Organization &o){
     //cout<<"Organization Added successfully."<<endl;
 }
 
+bool verify_org(long Org_ID){
+    // for(in the predefined array of govt. ID's){
+    //     if(Org_ID == ID){
+    //         return true;
+    //     }
+    // }
+    // return false;
+    
+    return true;    //just returning true for now
+}
