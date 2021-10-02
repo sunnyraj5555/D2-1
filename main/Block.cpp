@@ -145,3 +145,30 @@ void display_Blockchain(){
         }
     }
 }
+
+
+void display_Ledger(){
+    if(Ledger_size == 0){
+        cout<<"Ledger is Empty."<<endl;
+        return ;
+    }
+    cout<<"Ledger: ----------->"<<endl;
+    for(int i = 0;i<Ledger_size;i++)
+    {
+        cout<<"\t"<<Ledger[i].get_Transaction_ID()<<" : "<<Ledger[i].get_transaction_msg();
+        cout<<endl;
+    }
+}
+
+void display_Mempool(){
+    if(Mempool_size == 0){
+        cout<<"Mempool is Empty."<<endl;
+        return ;
+    }
+    cout<<"Mempool: --------->"<<endl;
+    for(int i = 0;i<Mempool_size;i++)
+    {
+        cout<<"\t"<<Mempool[i].get_Transaction_ID()<<" : "<<Mempool[i].get_transaction_msg();
+        cout<<endl;
+    }
+}
