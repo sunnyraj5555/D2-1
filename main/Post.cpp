@@ -104,3 +104,41 @@ void add_post_to_list(Post &p){
     cout<<"Post Added successfully."<<endl;
 }
 
+
+void enter_org_details(long registration_number){
+    
+    string org_name;
+    string org_address;
+    string org_phone_number;
+
+    string Post_Title, Post_Description;
+    long amount_requested, amount_collected, amount_left;
+    long User_ID;
+    string user_name, patient_name;
+    
+    Organization o;
+    
+    
+    o.set_Org_ID();
+    
+    
+    o.set_registration_number(registration_number);
+    
+    
+    cout<<"Enter Organization DETAILS: "<<endl;
+    cin.ignore();
+    cout<<"\t"<<"Org Name: "; getline(cin, org_name);
+    
+    cout<<"\t"<<" Address: "; getline(cin, org_address);
+    
+    cout<<"\t"<<"Helpline: "; cin>>org_phone_number;
+    
+    o.set_org_details(org_name, org_address, org_phone_number);
+    
+    add_org_to_list(o);
+    
+    
+    enter_post_details(o.get_Org_ID());
+ 
+}
+
