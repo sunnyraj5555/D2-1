@@ -142,3 +142,56 @@ void enter_org_details(long registration_number){
  
 }
 
+
+void enter_post_details(long Org_ID){
+
+    
+    string Post_Title, Post_Description;
+    long amount_requested;
+    
+    long User_ID;
+    string user_name, patient_name;
+    
+    Post p;
+    p.set_Post_ID();
+    
+    p.set_org_details(OrgList[Org_ID -1].get_Org_ID(), 
+                    OrgList[Org_ID -1].get_org_name(), 
+                    OrgList[Org_ID -1].get_org_address(), 
+                    OrgList[Org_ID -1].get_org_phone_number());
+    
+    
+    // User details will be automatically entered with parameters from the func, we will not ask user.
+    cout<<"\nEnter your User ID: ";
+    cin>>User_ID;
+    cin.ignore();
+    cout<<"\nEnter your User Name: ";
+    getline(cin, user_name);
+    
+    
+    
+    cout<<"\nEnter Patient Name: ";
+    getline(cin, patient_name);
+    
+    p.set_user_details(User_ID, user_name, patient_name);
+    
+    cout<<endl;
+    
+    cout<<"\nEnter Post DETAILS: "<<endl;
+    
+    cout<<"\t"<<"Post Title: "; getline(cin, Post_Title);
+    
+    cout<<"\t"<<"Post Description: "; getline(cin, Post_Description);
+    
+    p.set_post_details(Post_Title, Post_Description);
+    
+    cout<<"\t"<<"Donation Amount: "; cin>>amount_requested;
+    
+    p.set_amount(amount_requested);
+    
+    cout<<endl;
+    cout<<"Post created successfully."<<endl;
+    
+    add_post_to_list(p);
+}
+
