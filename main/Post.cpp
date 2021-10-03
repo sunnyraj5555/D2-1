@@ -195,3 +195,35 @@ void enter_post_details(long Org_ID){
     add_post_to_list(p);
 }
 
+
+
+void display_PostList(){
+    if(PostList_size == 0){
+        cout<<"No Posts Found. "<<endl;
+        return ;
+    }
+    for(int i =0;i<PostList_size;i++){
+        cout<<"\t"<<PostList[i].get_Post_ID()<<" : "<<PostList[i].get_Post_Title()<<" | "<<PostList[i].get_amount_requested()
+        <<" | "<<PostList[i].get_amount_left();
+        cout<<endl;
+    }
+    cout<<endl;
+}
+
+void display_Post(long Post_ID){
+    cout<<"\t"<<"TITLE: "<<PostList[Post_ID -1].get_Post_Title()<<endl;
+    cout<<"\t"<<"Pid: "<<PostList[Post_ID -1].get_Post_ID()<<endl;
+    cout<<endl;
+    cout<<"\t"<<"Patient: "<<PostList[Post_ID -1].get_patient_name()<<endl;
+    cout<<endl;
+    cout<<"\t"<<"Incident: "<<PostList[Post_ID -1].get_Post_Description()<<endl;
+    cout<<endl;
+    cout<<endl;
+    cout<<"\t"<<" Amount Req: "<<PostList[Post_ID -1].get_amount_requested()<<endl;
+    cout<<"\t"<<"Left amount: "<<PostList[Post_ID -1].get_amount_left()<<endl;
+    cout<<endl;
+    PostList[Post_ID -1].get_org_details();
+    cout<<endl;
+    PostList[Post_ID -1].get_user_details();
+    cout<<endl;
+}
