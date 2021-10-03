@@ -64,4 +64,15 @@ class Post {
 
 };
 
+extern Post PostList[N];
+extern long PostList_size;
+
+void display_PostList();
+void display_Post(long Post_ID);
+void add_post_to_list(Post &p);
+void enter_org_details(long registration_number);
+void enter_post_details(long Org_ID);
+
+
+
 #endif /* POST_H */
