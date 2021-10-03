@@ -18,6 +18,8 @@
 #include "Block.h"
 
 using namespace std;
+Post PostList[N];
+long PostList_size =0;
 
    void Post::set_Post_ID(){
         Post_ID = PostList_size + 1;
@@ -95,4 +97,10 @@ using namespace std;
     }
 
 
+void add_post_to_list(Post &p){
+    PostList[PostList_size] = p;
+    PostList_size++;
+    
+    cout<<"Post Added successfully."<<endl;
+}
 
