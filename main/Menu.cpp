@@ -207,3 +207,26 @@ void post_list_menu(){
         }
     }
 }
+
+void donate_to_post_menu(long Post_ID)
+{
+    cout<<"1. Donate to this Post."<<endl;
+    cout<<"2. Return to Post list."<<endl;
+    int choose2;
+    cout<<"\nEnter your choice: ";
+    cin>>choose2;
+    cout<<endl;
+    switch(choose2){
+        case 1: {
+            donate_money_UI(Post_ID,"","");
+            break;
+        }
+        case 2: {
+            post_list_menu();
+            break;
+        }
+        default: {
+            cout<<"Invalid Choice."<<endl;
+        }
+    }
+}
