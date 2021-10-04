@@ -20,3 +20,48 @@
 
 using namespace std;
 
+void Title()
+{
+    cout << "\n\n ========================================================= "
+         << "\n        D2: Blockchain Based Secure Donation System "
+         << "\n ========================================================= ";
+}
+
+void PressEnter()
+{
+    cout << "\n\n\n Press ENTER to continue ... ";
+    cin.get(); //(expected for Enter, need #include <iostream>).
+    cin.get();
+}
+
+void ClearOS()
+{
+    // Source: https://iq.opengenus.org/detect-operating-system-in-c/
+    
+	#ifdef _WIN32
+		system("cls"); // Windows Operating System
+	#endif
+	
+	#ifdef __linux__
+		system("clear"); // Linux Operating System
+	#endif
+	
+	#ifdef __unix__
+		system("clear"); // Unix Operating System
+	#endif
+}
+
+int main()
+{
+    ClearOS();
+        
+    create_Genesis_Block();
+    intitialise_OrgList();
+    admin_init();
+    
+    ClearOS();
+    
+    main_menu();
+    
+    return 0;
+}
