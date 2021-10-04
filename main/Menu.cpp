@@ -94,3 +94,41 @@ void admin_main_menu(){
     }
     }
 }
+
+
+void user_menu(){
+    while(1){
+    cout<<endl;
+    cout<<"Welcome USER.! Please select one of the following operations: "<<endl;
+
+    cout<<"1. Donate Money "<<endl;
+    cout<<"2. Create Post "<<endl;
+
+    cout<<endl;
+    cout<<"Enter 0 to return to main menu. "<<endl;
+
+    int choose;
+    cout<<"\nEnter your choice: ";
+    cin>>choose;
+    cout<<endl;
+    switch(choose){
+        case 0: {
+            main_menu();
+            break;
+        }
+        case 1: {
+            post_list_menu();
+            break;
+        }
+        case 2: {
+            org_list_menu();
+            break;
+        }
+        default: {
+            cout<<"This feature is currently being developed."<<endl;
+            break;
+        }
+        
+    }
+    }
+}
