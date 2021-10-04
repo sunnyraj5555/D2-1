@@ -208,6 +208,7 @@ void post_list_menu(){
     }
 }
 
+
 void donate_to_post_menu(long Post_ID)
 {
     cout<<"1. Donate to this Post."<<endl;
