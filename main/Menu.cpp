@@ -177,3 +177,33 @@ void org_list_menu(){
         return ;
     }
 }
+
+
+void post_list_menu(){
+    
+    if(PostList_size == 0){
+        cout<<"Currently no posts available for donation. !"<<endl;
+        return ;
+    }
+    cout<<"List of Posts ------------>"<<endl;
+    cout<<endl;
+    display_PostList();
+    cout<<"Enter the post ID you want to read and donate to "<<endl;
+    cout<<"OR"<<endl;
+    cout<<"Enter 0 to return to user menu"<<endl;
+    long choose1;
+    cout<<"\nEnter your choice: ";
+    cin>>choose1;
+    cout<<endl;
+    switch(choose1){
+        case 0: {
+            user_menu();
+            break;
+        }
+        default: {
+            display_Post(choose1);
+            donate_to_post_menu(choose1);
+            break;
+        }
+    }
+}
