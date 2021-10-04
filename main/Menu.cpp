@@ -132,3 +132,48 @@ void user_menu(){
     }
     }
 }
+
+
+void org_list_menu(){
+    
+    cout<<"List of Orgs ------------>"<<endl;
+    cout<<endl;
+    display_OrgList();
+    cout<<endl;
+    cout<<endl;
+    cout<<"\t Press 1 to select Org from above list."<<endl;
+    cout<<"\t Press 2 to enter your own Org details."<<endl;
+    cout<<"\t Press 0 to return to user menu."<<endl;
+    
+    cout<<endl;
+    int choose1;
+    cout<<"\nEnter your choice: ";
+    cin>>choose1;
+    cout<<endl;
+    if(choose1 == 1){
+        cout<<"Enter the Org ID you want to link "<<endl;
+        cout<<"OR"<<endl;
+        cout<<"Enter 0 to return to user menu"<<endl;
+        long choose1;
+        cout<<"\nEnter your choice: ";
+        cin>>choose1;
+        cout<<endl;
+        switch(choose1){
+            case 0: {
+                user_menu();
+                break;
+            }
+            default: {
+                enter_post_details(choose1);
+                break;
+            }
+        }
+    }
+    else if(choose1 == 2){
+        create_org();
+    }
+    else{
+        user_menu();
+        return ;
+    }
+}
