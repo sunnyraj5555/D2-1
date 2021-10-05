@@ -15,7 +15,6 @@ using namespace std;
 #define BLOCK_H
 
 
-
 class Block
 {
     private:
@@ -23,7 +22,7 @@ class Block
     long BlockNumber;       //every block has a number
     Transaction Transactions_in_the_Block[N];       // to store the list of transactions in array of transaction class objects for each transaction
     int No_of_Transactions_in_Block;            // to store how many transactions are there inside a particular block
-    string Previous_Hash, Block_Hash;          // to store prev has and current block hash inside 
+    string Previous_Hash , Block_Hash;          // to store prev has and current block hash inside 
 
     public:
 
@@ -55,7 +54,7 @@ class Block
 
 extern Block BlockChain[N];
 extern long BlockChain_size;
-void intitialise_BlockChain_size();
+
 void create_Genesis_Block();
 string create_block_hash(Block &b);
 void add_Block_to_BlockChain(Block &b);
