@@ -150,27 +150,44 @@ Transaction NewTransaction(string sender, string reciever, long amount)
 }
 
 // currently demostrated in the main()
-void donate_money_UI(long Post_ID, string user_priv_key ,string admin_pub_key)    //this will have more parameter as username, recivername
+void donate_money_UI(long Post_ID)    //this will have more parameter as username, recivername
 {
     string sender, reciever;
     long amount;
-    cin.ignore();
-    cout << "\n Enter the sender : "; getline(cin, sender);
-    cout << " Enter the reciever : "; getline(cin, reciever);
-    cout << " Enter the amount : "; cin >> amount;
     
-    // this array will be using 0 based indexing
-    //Transaction_Array[List_of_Transaction_ID.size() - 1] = NewTransaction( sender,  reciever,  amount);
+    sender = UserList[Logged_User_ID - 1].get_User_Name();
+    reciever = PostList[Post_ID - 1].get_org_name();
+
+    cout<<"\nYour Current Balance: "<<UserList[Logged_User_ID - 1].get_User_Balance()<<endl;
+    while(1){
+        cout << "Enter the amount : "; cin >> amount;
     
+        if(amount > 0 && amount > PostList[Post_ID - 1].get_amount_left() ){
+            cout<<"Invalid Amount. \nEntered Amount is either less than 1 rs or more than left amount"<<endl;
+            cout<<endl;
+        }
+        else if(amount > UserList[Logged_User_ID - 1].get_User_Balance()){
+            cout<<"Entered Amount is more than current balance."<<endl;
+            cout<<endl;
+        }
+        else
+            break;
+    }
     
-    // now this function will just go to the server
-    send_transaction_from_client_to_server(NewTransaction( sender,  reciever,  amount ), user_priv_key , admin_pub_key);
     
     //Mempool[Mempool_size -1] = NewTransaction( sender,  reciever,  amount );
     PostList[Post_ID - 1].deduct_money(amount);
 
-    //int n = List_of_Transaction_ID.top() - 1;
+    UserList[Logged_User_ID - 1].deduct_User_Balance(amount);
 
-    // cout<<"\n Transaction ID : " << Transaction_Array[n].get_Transaction_ID() << endl;
-    // cout<<"\n Transaction Message : " << Transaction_Array[n].get_transaction_msg() << endl;
+    // now this function will just go to the server
+    send_transaction_from_client_to_server(NewTransaction( sender,  reciever,  amount ), 
+                                            UserList[Logged_User_ID -1].get_User_Private_Key(), 
+                                            Admin.get_User_Public_Key());
+    
+    
+
+
+
+    
 }
