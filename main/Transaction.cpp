@@ -75,7 +75,7 @@ long Transaction_Ids =0;
 
 
 
-void send_transaction_from_client_to_server(Transaction t, string user_priv_key ,string admin_pub_key ){
+void send_transaction_from_client_to_server(Transaction t, long user_priv_key ,long admin_pub_key ){
     
     // entire socket programming will be done in this function
     // first extract t.get_transaction_msg()
@@ -87,7 +87,7 @@ void send_transaction_from_client_to_server(Transaction t, string user_priv_key 
     recieve_transaction_from_client(final_buffer,t);    //ideally only buffer will be sent
 }
 
-string prepare_transmission_buffer(Transaction &t, string user_priv_key ,string admin_pub_key){
+string prepare_transmission_buffer(Transaction &t, long user_priv_key ,long admin_pub_key){
     
     //first extract t.get_transaction_msg()
     // hash this message
