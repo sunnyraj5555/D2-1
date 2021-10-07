@@ -50,6 +50,8 @@ class Post {
     string get_patient_name();
     
     void get_org_details();
+    
+    string get_org_name();
 
     void set_amount(long amount_requested);
     
@@ -72,6 +74,7 @@ void display_Post(long Post_ID);
 void add_post_to_list(Post &p);
 void enter_org_details(long registration_number);
 void enter_post_details(long Org_ID);
+void post_init();
 
 
 
