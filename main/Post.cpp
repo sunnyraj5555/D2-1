@@ -226,3 +226,21 @@ void enter_post_details(long Org_ID){
     
     add_post_to_list(p);
 }
+
+
+void post_init(){
+    Post p;
+    p.set_Post_ID();
+    p.set_org_details(OrgList[0].get_Org_ID(), 
+                    OrgList[0].get_org_name(), 
+                    OrgList[0].get_org_address(), 
+                    OrgList[0].get_org_phone_number());
+    
+    p.set_user_details(3, "Ramesh", "Surya");
+
+    p.set_post_details("COvid 19", "PLease donate need help");
+
+    p.set_amount(5000);
+
+    add_post_to_list(p);
+}
