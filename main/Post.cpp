@@ -74,6 +74,12 @@ long PostList_size =0;
         cout<<"\tHelpline: "<< org_phone_number <<endl;
     }
 
+    string Post::get_org_name(){
+        return org_name;
+    }
+
+
+
     void Post::set_amount(long amount_requested){
         
         this->amount_requested=amount_requested;
@@ -194,14 +200,12 @@ void enter_post_details(long Org_ID){
     
     
     // User details will be automatically entered with parameters from the func, we will not ask user.
-    cout<<"\nEnter your User ID: ";
-    cin>>User_ID;
+
+    User_ID = UserList[Logged_User_ID -1].get_User_ID();
+    user_name = UserList[Logged_User_ID -1].get_User_Name();
+
+    
     cin.ignore();
-    cout<<"\nEnter your User Name: ";
-    getline(cin, user_name);
-    
-    
-    
     cout<<"\nEnter Patient Name: ";
     getline(cin, patient_name);
     
@@ -226,6 +230,7 @@ void enter_post_details(long Org_ID){
     
     add_post_to_list(p);
 }
+
 
 
 void post_init(){
