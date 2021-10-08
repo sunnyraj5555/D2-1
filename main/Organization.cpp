@@ -139,6 +139,8 @@ void intitialise_OrgList(){
     
     add_org_to_list(org4);
 
+    post_init();
+
 }
 
 
