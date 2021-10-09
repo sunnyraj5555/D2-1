@@ -231,3 +231,26 @@ void read_Mempool_size(){
 
     Mempool_size = temp;
 }
+
+void write_Mempool(){
+
+    cout<<"Write 1"<<endl;
+    Transaction *temp = new Transaction[Mempool_size];
+    for(int i =0 ;i<Mempool_size;i++){
+        temp[i] = Mempool[i];
+    }
+    cout<<"Write 2"<<endl;
+    ofstream fstream_ob;
+
+    fstream_ob.open("Mempool.bat", ios::out );
+
+    cout<<"Write 3"<<endl;
+
+    fstream_ob.write( (char *) &temp, sizeof(temp));
+
+    cout<<"Congrats! Your array of objects is successfully written to the file \n";
+
+    fstream_ob.close();
+
+    cout<<"Write 4"<<endl;
+}
