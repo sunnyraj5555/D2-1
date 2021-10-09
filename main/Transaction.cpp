@@ -211,3 +211,23 @@ void write_Mempool_size(){
 
     // Mempool_size >> fp
 }
+
+void read_Mempool_size(){
+    fstream fp;
+    long temp;
+    
+    fp.open("Mempool_size.txt", ios::in);
+    
+    if (!fp) 
+    {
+        cout << "\n\n !! Unable to open file !! ";
+        exit(1); // terminate with error
+    }
+    
+    // reading from temp
+    fp >> temp;
+    
+    fp.close();
+
+    Mempool_size = temp;
+}
