@@ -191,3 +191,23 @@ void donate_money_UI(long Post_ID)    //this will have more parameter as usernam
 
     
 }
+
+void write_Mempool_size(){
+
+    fstream fp;
+    
+    fp.open("Mempool_size.txt", ios::out );
+    
+    if (!fp) 
+    {
+        cout << "\n\n !! Unable to open file !! ";
+        exit(1); // terminate with error
+    }
+    
+    // writing to file 
+    fp << Mempool_size;
+    
+    fp.close();
+
+    // Mempool_size >> fp
+}
