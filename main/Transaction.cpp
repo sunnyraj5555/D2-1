@@ -341,3 +341,39 @@ void write_Ledger(){
     cout<<"Write 4"<<endl;
 }
 
+
+void read_Ledger(){
+    Transaction *temp = new Transaction[Ledger_size];
+    // for(int i =0 ;i<Mempool_size;i++){
+    //     temp[i] = Mempool[i];
+    // }
+
+    cout<<"Read 1"<<endl;
+    //Creating an intput stream
+    ifstream ifstream_ob;
+
+    //Calling the open function to read and write an object to/from a file
+    ifstream_ob.open("Ledger.txt", ios::in | ios::binary);
+
+    cout<<"\nReading an array of objects from a file : \n";
+
+    //Calling the read() function to read an array of objects from a file and transfer its content to an empty object
+    ifstream_ob.read( (char *) &temp, sizeof(temp));
+
+    cout<<"Read 2"<<endl;
+
+    //Closing the input stream
+    ifstream_ob.close();
+
+    cout<<"Read 3"<<endl;
+
+    cout<<"Ledger: --------->"<<endl;
+
+    for(int i = 0;i<Ledger_size;i++)
+    {
+        cout<<"\t"<<temp[i].get_Transaction_ID()<<" : "<<temp[i].get_transaction_msg();
+        cout<<endl;
+    }
+    cout<<"Read 4"<<endl;
+}
+
