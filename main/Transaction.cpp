@@ -308,3 +308,12 @@ void read_Mempool(){
     cout<<"Read 4"<<endl;
 }
 
+void write_Ledger_size(){
+    // Ledger_size >> fp
+}
+
+void read_Ledger_size(){
+    int temp;
+    Ledger_size = temp;
+}
+
