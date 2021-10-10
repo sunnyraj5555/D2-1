@@ -317,3 +317,27 @@ void read_Ledger_size(){
     Ledger_size = temp;
 }
 
+
+void write_Ledger(){
+
+    cout<<"Write 1"<<endl;
+    Transaction *temp = new Transaction[Ledger_size];
+    for(int i =0 ;i<Ledger_size;i++){
+        temp[i] = Ledger[i];
+    }
+    cout<<"Write 2"<<endl;
+    ofstream fstream_ob;
+
+    fstream_ob.open("Ledger.txt", ios::out);
+
+    cout<<"Write 3"<<endl;
+
+    fstream_ob.write( (char *) &temp, sizeof(temp));
+
+    cout<<"Congrats! Your array of objects is successfully written to the file \n";
+
+    fstream_ob.close();
+
+    cout<<"Write 4"<<endl;
+}
+
