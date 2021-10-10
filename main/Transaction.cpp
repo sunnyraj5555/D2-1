@@ -254,3 +254,57 @@ void write_Mempool(){
 
     cout<<"Write 4"<<endl;
 }
+
+void read_Mempool(){
+
+    if(Mempool_size == 0){
+        return ;
+    }
+    cout<<Mempool_size<<endl;
+    Transaction *temp = new Transaction[Mempool_size];
+    // for(int i =0 ;i<Mempool_size;i++){
+    //     temp[i] = Mempool[i];
+    // }
+
+    cout<<"Read 1"<<endl;
+
+    for(int i = 0;i<Mempool_size;i++)
+    {
+        cout<<"hi"<<endl;
+        cout<<"\t"<<temp[i].get_Transaction_ID()<<" : "<<temp[i].get_transaction_msg();
+        cout<<"Bye"<<endl;
+        cout<<endl;
+    }
+    
+    //Creating an intput stream
+    ifstream ifstream_ob;
+
+    //Calling the open function to read and write an object to/from a file
+    ifstream_ob.open("Mempool.bat", ios::in);
+    if(ifstream_ob.is_open()){
+        cout<<"File is Open to Read"<<endl;
+    }
+    cout<<"\nReading an array of objects from a file : \n";
+    
+    //Calling the read() function to read an array of objects from a file and transfer its content to an empty object
+    ifstream_ob.read( (char *) &temp, sizeof(temp));
+
+    cout<<"Read 2"<<endl;
+
+    //Closing the input stream
+    ifstream_ob.close();
+
+    cout<<"Read 3"<<endl;
+
+    cout<<"Mempool: --------->"<<endl;
+    cout<<Mempool_size<<endl;
+    for(int i = 0;i<Mempool_size;i++)
+    {
+        cout<<"hi"<<endl;
+        cout<<"\t"<<temp[i].get_Transaction_ID()<<" : "<<temp[i].get_transaction_msg();
+        cout<<"Bye"<<endl;
+        cout<<endl;
+    }
+    cout<<"Read 4"<<endl;
+}
+
