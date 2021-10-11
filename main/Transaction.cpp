@@ -377,3 +377,13 @@ void read_Ledger(){
     cout<<"Read 4"<<endl;
 }
 
+void write_BLockChain_size(){
+    // BlockChain_size >> fp
+}
+
+void read_BlockChain_size(){
+    int temp;
+    BlockChain_size = temp;
+}
+
+
