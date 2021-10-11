@@ -387,3 +387,33 @@ void read_BlockChain_size(){
 }
 
 
+void write_BlockChain(){
+
+    cout<<"Write 1"<<endl;
+    cout<<"gew"<<endl;
+    Block *temp = new Block[BlockChain_size];
+    cout<<"0"<<endl;
+
+    cout<<BlockChain_size<<endl;
+
+    for(int i =0 ;i<BlockChain_size;i++){
+        cout<<"1"<<endl;
+        temp[i] = BlockChain[i];
+    }
+    cout<<"Write 2"<<endl;
+    ofstream fstream_ob;
+
+    fstream_ob.open("BlockChain.txt", ios::out);
+
+    cout<<"Write 3"<<endl;
+
+    fstream_ob.write( (char *) &temp, sizeof(temp));
+
+    cout<<"Congrats! Your array of objects is successfully written to the file \n";
+
+    fstream_ob.close();
+
+    cout<<"Write 4"<<endl;
+}
+
+
