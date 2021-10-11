@@ -417,3 +417,61 @@ void write_BlockChain(){
 }
 
 
+void read_BlockChain(){
+    Block *temp = new Block[BlockChain_size];
+    // for(int i =0 ;i<Mempool_size;i++){
+    //     temp[i] = Mempool[i];
+    // }
+
+    cout<<"Read 1"<<endl;
+    //Creating an intput stream
+    ifstream ifstream_ob;
+
+    //Calling the open function to read and write an object to/from a file
+    ifstream_ob.open("BlockChain.txt", ios::in | ios::binary);
+
+    cout<<"\nReading an array of objects from a file : \n";
+
+    //Calling the read() function to read an array of objects from a file and transfer its content to an empty object
+    ifstream_ob.read( (char *) &temp, sizeof(temp));
+
+    cout<<"Read 2"<<endl;
+
+    //Closing the input stream
+    ifstream_ob.close();
+
+    cout<<"Read 3"<<endl;
+
+    cout<<"BlockChain: --------->"<<endl;
+
+    // for(int i = 1;i<BlockChain_size;i++)
+    // {
+    //     cout<<"\t"<<temp[i].get_BlockNumber()<<" : "<<temp[i].get_No_of_Transactions_in_Block()<<" b "<<temp[i].get_Block_Hash();
+    //     cout<<endl;
+    // }
+
+    for(int i = 0; i < BlockChain_size; i++){
+    
+            cout<<" ---------------------"<<endl;
+            cout<<"Block ID: " << temp[i].get_BlockNumber()<<endl;
+            cout<<"Previous Block hash: "<<temp[i].get_Previous_Hash()<<endl;
+            cout<<"Current Block hash: "<<temp[i].get_Block_Hash()<<endl;
+            cout<<"Transactions inside the Block: "<<endl;
+            cout<<"{"<<endl;
+    
+            for(int j =0;j<temp[i].get_No_of_Transactions_in_Block();j++){
+                cout<<"\t Transaction No: "<<j+1<<endl;
+                cout<<"\t Transaction ID: "<<temp[i].get_transaction_ID_from_block(j)<<endl;
+                cout<<"\t Transaction Message: "<<temp[i].get_transaction_msg_from_block(j)<<endl;
+                cout<<endl;
+            }
+            cout<<"}"<<endl;
+            cout<<endl;
+    }
+
+
+    cout<<"Read 4"<<endl;
+}
+
+
+
