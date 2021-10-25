@@ -7,7 +7,6 @@
  *     Authors: Aryan Mukerji
  */
 
-
 #include <iostream>
 #include <cstring>
 #include "Person.h"
@@ -18,6 +17,9 @@ using namespace std;
 #ifndef MAIN_H
 #define MAIN_H
 
-
+void Title();
+void PressEnter();
+void ClearOS();
+int keys(User &u);
 
 #endif /* MAIN_H */
