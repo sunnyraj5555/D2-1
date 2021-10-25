@@ -19,215 +19,231 @@
 
 using namespace std;
 
-
-void main_menu(){
-    cout<<endl;
-    cout<<"\t\t Welcome To D2 - A BlockChain Based Secure Donation System !"<<endl;
-    cout<<"\n\n";
-    cout<<"\t\t1. Login as User "<<endl;
-    cout<<"\t\t2. Login as Admin "<<endl;
-
-    int choose;
-    cout<<"\n\t\t Enter your choice: ";
-    cin>>choose;
-    
-    switch(choose){
-        case 1: {
-            user_menu();
+void main_menu()
+{
+    MAIN:
+        
+        int choose;
+        
+        ClearOS();
+        Title();
+        
+        cout << "\n\n 1. Login as User "
+             << "\n 2. SignUp as User "
+             << "\n 3. Login as Admin "
+             << "\n 4. Exit "
+             << "\n\n Enter Your Choice : ";
+        cin >> choose;
+        
+        switch(choose)
+        {
+            case 1: user_login();
             break;
-        }
-        case 2: {
-            admin_main_menu();
+            
+            case 2: create_user();
             break;
-        }
-           default: {
-            cout<<"\t Invalid Input."<<endl;
+            
+            case 3: admin_login();
             break;
+            
+            case 4: exit(0);
+            
+            default: cout << "\n !!Invalid Input!! ";
         }
         
-    }
+    goto MAIN;    
+}
 
+void admin_main_menu()
+{
+    ADMIN:
+        
+        int choose;
+        
+        ClearOS();
+        Title();
+        
+        cout << "\n\n Welcome ADMIN !! \n Please select one of the following operations :- "
+             << "\n\n 1. Mine a Block "
+             << "\n 2. Display BlockChain "
+             << "\n 3. Display Ledger "
+             << "\n 4. Display Mempool "
+             << "\n 5. Display UserList "
+             << "\n 6. Logout "
+             << "\n\n Enter Your Choice : ";
+        cin >> choose;
+        
+        switch(choose)
+        {
+            case 1: {mine_block(); PressEnter();}
+            break;
+            
+            case 2: {display_Blockchain(); PressEnter();}
+            break;
+            
+            case 3: {display_Ledger(); PressEnter();}
+            break;
+            
+            case 4: {display_Mempool(); PressEnter();}
+            break;
+            
+            case 5: {display_UserList(); PressEnter();}
+            break;
+            
+            case 6: main_menu();
+            break;
+            
+            default: cout << "\n !!Invalid Input!! ";
+        }
+        
+    goto ADMIN;
+}
+
+void user_menu()
+{
+    USER:
+        
+        int choose;
+        
+        ClearOS();
+        Title();
+        
+        cout << "\n\n Welcome " << UserList[Logged_User_ID - 1].get_User_Name() << " !! \n Please select one of the following operations :- "
+             << "\n\n 1. Donate Money "
+             << "\n 2. Create Post "
+             << "\n 3. Logout "
+             << "\n\n Enter Your Choice : ";
+        cin >> choose;
+        
+        switch(choose)
+        {
+            case 1: post_list_menu();
+            break;
+            
+            case 2: org_list_menu();
+            break;
+            
+            case 3: main_menu();
+            break;
+            
+            default: cout << "\n !!Invalid Input!! ";
+        }
+        
+    goto USER;
+}
+
+void org_list_menu()
+{
+    ORGLISTMENU:
+        
+        ClearOS();
+        
+        int choose1;
+        
+        cout << "\n\n ********** List of Organizations ********** ";
+        
+        display_OrgList();
+        
+        cout << "\n\n 1. Select Organizations from above list "
+             << "\n 2. Enter your new Organization Details (If your desired Organization is not in the above list) "
+             << "\n 3. Return to User Menu "
+             << "\n\n Enter Your Choice : ";
+        cin >> choose1;
+        
+        switch(choose1)
+        {
+            case 1:
+            {
+                long choose2;
+                
+                cout << "\n\n Enter the Organization ID you want to link from above list "
+                     << "\n Enter Your Choice : ";
+                cin >> choose2;
+                
+                if (choose2 >= 1 && choose2 <= OrgList_size)
+                {
+                    enter_post_details(choose2);
+                }
+                else
+                {
+                    cout << "\n !!Invalid Organization ID!! ";
+                    goto ORGLISTMENU;
+                }
+                
+            }
+            break;
+            
+            case 2: create_org();
+            break;
+            
+            case 3: user_menu();
+            break;
+            
+            default: cout << "\n !!Invalid Input!! ";
+        }
+        
+    goto ORGLISTMENU;
 }
 
 
-void admin_main_menu(){
-    while(1){
+void post_list_menu()
+{
+    POSTLISTMENU:
         
-    cout<<endl;
-    cout<<"Welcome ADMIN.! Please select one of the following operations: "<<endl;
-    cout<<"1. Mine a Block "<<endl;
-    cout<<"2. Display BlockChain "<<endl;
-    cout<<"3. Display Ledger "<<endl;
-    cout<<"4. Display Mempool "<<endl;
-    cout<<endl;
-    cout<<"Enter 0 to return to main menu. "<<endl;
-    int choose;
-    cout<<"\nEnter your choice: ";
-    cin>>choose;
-    cout<<endl;
-    switch(choose){
-        case 0: {
-            main_menu();
-            break;
-        }
-        case 1: {
-            mine_block();
-            break;
-        }
-        case 2: {
-            display_Blockchain();
-            break;
-        }
-        case 3: {
-            display_Ledger();
-            break;
-        }
-        case 4: {
-            display_Mempool();
-            break;
-        }
-        default: {
-            cout<<"This feature is currntly being developed."<<endl;
-            break;
+        ClearOS();
+        
+        if(PostList_size == 0)
+        {
+            cout << "\n\n !! Currently no posts available for donation !! ";
+            PressEnter();
+            return ;
         }
         
-    }
-    }
-}
-
-
-void user_menu(){
-    while(1){
-    cout<<endl;
-    cout<<"Welcome USER.! Please select one of the following operations: "<<endl;
-
-    cout<<"1. Donate Money "<<endl;
-    cout<<"2. Create Post "<<endl;
-
-    cout<<endl;
-    cout<<"Enter 0 to return to main menu. "<<endl;
-
-    int choose;
-    cout<<"\nEnter your choice: ";
-    cin>>choose;
-    cout<<endl;
-    switch(choose){
-        case 0: {
-            main_menu();
-            break;
-        }
-        case 1: {
-            post_list_menu();
-            break;
-        }
-        case 2: {
-            org_list_menu();
-            break;
-        }
-        default: {
-            cout<<"This feature is currently being developed."<<endl;
-            break;
-        }
-        
-    }
-    }
-}
-
-
-void org_list_menu(){
-    
-    cout<<"List of Orgs ------------>"<<endl;
-    cout<<endl;
-    display_OrgList();
-    cout<<endl;
-    cout<<endl;
-    cout<<"\t Press 1 to select Org from above list."<<endl;
-    cout<<"\t Press 2 to enter your own Org details."<<endl;
-    cout<<"\t Press 0 to return to user menu."<<endl;
-    
-    cout<<endl;
-    int choose1;
-    cout<<"\nEnter your choice: ";
-    cin>>choose1;
-    cout<<endl;
-    if(choose1 == 1){
-        cout<<"Enter the Org ID you want to link "<<endl;
-        cout<<"OR"<<endl;
-        cout<<"Enter 0 to return to user menu"<<endl;
         long choose1;
-        cout<<"\nEnter your choice: ";
-        cin>>choose1;
-        cout<<endl;
-        switch(choose1){
-            case 0: {
-                user_menu();
-                break;
-            }
-            default: {
-                enter_post_details(choose1);
-                break;
-            }
-        }
-    }
-    else if(choose1 == 2){
-        create_org();
-    }
-    else{
-        user_menu();
-        return ;
-    }
-}
-
-
-void post_list_menu(){
-    
-    if(PostList_size == 0){
-        cout<<"Currently no posts available for donation. !"<<endl;
-        return ;
-    }
-    cout<<"List of Posts ------------>"<<endl;
-    cout<<endl;
-    display_PostList();
-    cout<<"Enter the post ID you want to read and donate to "<<endl;
-    cout<<"OR"<<endl;
-    cout<<"Enter 0 to return to user menu"<<endl;
-    long choose1;
-    cout<<"\nEnter your choice: ";
-    cin>>choose1;
-    cout<<endl;
-    switch(choose1){
-        case 0: {
-            user_menu();
+        
+        cout << "\n\n ********** List of Posts ********** ";
+        
+        display_PostList();
+        
+        cout << "\n\n Enter the Post ID you want to view and donate "
+             << "\n Enter 0 to Return to User Menu "
+             << "\n\n Enter Your Choice : ";
+        cin >> choose1;
+        
+        switch(choose1)
+        {
+            case 0: user_menu();
             break;
+            
+            default: 
+            {
+                ClearOS();
+                
+                display_Post(choose1);
+                donate_to_post_menu(choose1);
+            }
         }
-        default: {
-            display_Post(choose1);
-            donate_to_post_menu(choose1);
-            break;
-        }
-    }
+        
+    goto POSTLISTMENU;
 }
-
 
 void donate_to_post_menu(long Post_ID)
 {
-    cout<<"1. Donate to this Post."<<endl;
-    cout<<"2. Return to Post list."<<endl;
     int choose2;
-    cout<<"\nEnter your choice: ";
-    cin>>choose2;
-    cout<<endl;
-    switch(choose2){
-        case 1: {
-            donate_money_UI(Post_ID,"","");
-            break;
-        }
-        case 2: {
-            post_list_menu();
-            break;
-        }
-        default: {
-            cout<<"Invalid Choice."<<endl;
-        }
+    
+    cout << "\n\n 1. Donate to this Post "
+         << "\n 2. Return to Post list "
+         << "\n\n Enter Your Choice : ";
+    cin >> choose2;
+    
+    switch(choose2)
+    {
+        case 1: donate_money_UI(Post_ID);
+        break;
+        
+        case 2: post_list_menu();
+        break;
+        
+        default: cout << "\n !!Invalid Input!! ";
     }
 }
