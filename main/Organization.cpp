@@ -19,66 +19,83 @@
 
 using namespace std;
 
-
 Organization OrgList[N];
 long OrgList_size = 0;
 
-    void Organization::set_org_details(string org_name, string org_address, string org_phone_number ){
+    void Organization::set_org_details(string org_name, string org_address, string org_phone_number)
+    {
         this->org_name = org_name;
-        this->org_address=org_address;
-        this->org_phone_number=org_phone_number; 
-    }
-    void Organization::get_org_details(){
-        cout<< "-----ORGANIZATION DETAILS------ "<<"\n";
-        cout<<"Name:"<< org_name <<endl;
-        cout<<"Address:"<<org_address <<endl;
-        cout<<"Phone Number:"<<org_phone_number <<endl;
+        this->org_address = org_address;
+        this->org_phone_number = org_phone_number; 
     }
     
-    void Organization::set_Org_ID(){
+    void Organization::get_org_details()
+    {
+        cout << "\n\n ********** Organization Details ********** "
+             << "\n\n Name : " << org_name
+             << "\n Address : " << org_address
+             << "\n Phone Number : " << org_phone_number;
+    }
+    
+    void Organization::set_Org_ID()
+    {
         this->Org_ID = OrgList_size + 1;
     }
-    long Organization::get_Org_ID(){
+    
+    long Organization::get_Org_ID()
+    {
         return Org_ID;
     }
     
-    string Organization::get_org_name(){
+    string Organization::get_org_name()
+    {
         return org_name;
     }
     
-    string Organization::get_org_address(){
+    string Organization::get_org_address()
+    {
         return org_address;
     }
-    string Organization::get_org_phone_number(){
+    
+    string Organization::get_org_phone_number()
+    {
         return org_phone_number;
     }
-    void Organization::set_registration_number(long registration_number){
-        this->registration_number=registration_number;
+    
+    void Organization::set_registration_number(long registration_number)
+    {
+        this->registration_number = registration_number;
     }
-    long Organization::get_registration_number(){
+    
+    long Organization::get_registration_number()
+    {
         return registration_number;
     }
 
-
-void display_OrgList(){
-    if(OrgList_size == 0){
-        cout<<"No Org Found. "<<endl;
+void display_OrgList()
+{
+    if(OrgList_size == 0)
+    {
+        cout << "\n !!No Organization Found!! ";
         return ;
     }
-    for(int i =0;i<OrgList_size;i++){
-        cout<<"\t"<<OrgList[i].get_Org_ID()<<" : "<<OrgList[i].get_org_name()<<" | "<<OrgList[i].get_org_address();
-        cout<<endl;
+    
+    for(int i=0; i<OrgList_size; i++)
+    {
+        cout << "\n " << OrgList[i].get_Org_ID() << " : " << OrgList[i].get_org_name() << " | " << OrgList[i].get_org_address();
     }
 }
 
-void add_org_to_list(Organization &o){
+void add_org_to_list(Organization &o)
+{
     OrgList[OrgList_size] = o;
     OrgList_size++;
     
-    //cout<<"Organization Added successfully."<<endl;
+    cout << "\n !!Organization Added successfully!! ";
 }
 
-bool verify_org(long Org_ID){
+bool verify_org(long Org_ID)
+{
     // for(in the predefined array of govt. ID's){
     //     if(Org_ID == ID){
     //         return true;
@@ -86,32 +103,30 @@ bool verify_org(long Org_ID){
     // }
     // return false;
     
-    return true;    //just returning true for now
+    return true;    // just returning true for now
 }
 
- 
-void create_org(){
+void create_org()
+{
+    ClearOS();
+    
     long registration_number;
     
-    cout<<"Enter the Organization Registration Num: ";
-    cin>>registration_number;
+    cout << "\n\n Enter the Organization Registration Number : ";
+    cin >> registration_number;
     
-    if(verify_org(registration_number)){
+    if(verify_org(registration_number))
+    {
         enter_org_details(registration_number);
     }
-    else{
-        cout<<"Verification Failed. Org not valid."<<endl;
+    else
+    {
+        cout << "\n !!Verification Failed, Organization not valid!! ";
     }
 }
 
-// Organization search_org_with_id(long Org_ID){
-//     for(int i =0;i<OrgList_size;i++){
-        
-//     }
-// }
-
-void intitialise_OrgList(){
-    
+void intitialise_OrgList()
+{
     Organization org1, org2, org3, org4;
     
     org1.set_Org_ID();
@@ -126,7 +141,6 @@ void intitialise_OrgList(){
 
     add_org_to_list(org2);
     
-    
     org3.set_Org_ID();
     org3.set_registration_number(2103);
     org3.set_org_details("Priti Hospital", "Prayagraj, Uttar Pradesh", "6393283820");
@@ -140,7 +154,4 @@ void intitialise_OrgList(){
     add_org_to_list(org4);
 
     post_init();
-
 }
-
-
