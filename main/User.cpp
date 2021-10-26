@@ -56,7 +56,12 @@ User Admin;
     void User::set_user_public_key(int Public_Key)
     {
         this->Public_Key = Public_Key;
-    }        
+    }
+    
+    void User::set_user_EDFactor(int EDFactor)
+    {
+        this->EDFactor = EDFactor;
+    }
     
     void User::get_User()
     {
@@ -100,6 +105,11 @@ User Admin;
         return Private_Key;
     }
     
+    int User::get_User_EDFactor()
+    {
+        return EDFactor;
+    }
+    
     void User::deduct_User_Balance(long amount)
     {
         User_Balance -= amount;
@@ -121,7 +131,7 @@ void create_user()
     string Name, Phone_No, Email_ID, Password;
     string Public_Key, Private_Key;
     
-    cout << "\n\n **** Enter User Details **** ";
+    cout << "\n\n ********** Enter User Details ********** ";
     
     cin.ignore();
     cout << "\n\n Enter Name : "; getline(cin, Name);
@@ -161,7 +171,7 @@ void display_UserList()
         return ;
     }
     
-    cout << "\n\n **** User List **** ";
+    cout << "\n\n ********** User List ********** ";
     
     for(int i=0; i<UserList_size; i++)
     {
@@ -195,7 +205,7 @@ void user_login()
     
     string Email_ID, Password;
     
-    cout << "\n\n **** User LogIn **** ";
+    cout << "\n\n ********** User LogIn ********** ";
     
     cin.ignore();
     cout << "\n\n Email : "; getline(cin, Email_ID);
@@ -223,7 +233,7 @@ void admin_login()
     
     string Email_ID, Password;
     
-    cout << "\n\n **** Admin LogIn **** ";
+    cout << "\n\n ********** Admin LogIn ********** ";
     
     cin.ignore();
     cout<<"\n\n Email : "; getline(cin, Email_ID);
@@ -240,4 +250,3 @@ void admin_login()
         PressEnter();
     }
 }
-
