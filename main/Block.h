@@ -27,28 +27,20 @@ class Block
     public:
 
     Block();
-    
     void set_Previous_Hash();           // to set previous hash 
-
     void set_Block_Hash(string Block_Hash);       // will set the hash of current block
-
     void set_BlockNumber();         //  will set the block number accordingly from the current blockchain
 
     string get_Previous_Hash(); 
-
     string get_Block_Hash();
 
     long get_BlockNumber();
-
     long get_No_of_Transactions_in_Block(); 
 
     // flush all the transaction objs from Transaction_Array (exists in Transaction.h/.cpp) into Transactions_in_the_Block[] 
     // also updating the value of No_of_Transactions_in_Block variable = Transaction_Array size
     void fill_transactions_in_the_block();      
-
-    // 
     string get_transaction_msg_from_block(int i);
-
     long get_transaction_ID_from_block(int i);
 };
 
@@ -63,6 +55,5 @@ void mine_block();
 void display_Ledger();
 void display_Blockchain();
 void display_Mempool();
-
 
 #endif /* BLOCK_H */
