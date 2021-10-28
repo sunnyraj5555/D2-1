@@ -20,7 +20,7 @@
 using namespace std;
 
 Block BlockChain[N];
-long BlockChain_size =0;
+long BlockChain_size = 0;
 
     Block::Block()
     {
@@ -31,15 +31,19 @@ long BlockChain_size =0;
     void Block::set_Previous_Hash()
     {
         if(BlockChain_size == 0)
-        {       //for genesis Block
+        {   
+            // for genesis Block
             Previous_Hash = "Genesis Block";
-        }else
+        }
+        else
         {
             Previous_Hash = BlockChain[BlockChain_size - 1].get_Block_Hash();
         }
     }
-
-    void Block::set_Block_Hash(string Block_Hash){         //this function will be called after SHA hashing the block object
+    
+    // this function will be called after SHA hashing the block object
+    void Block::set_Block_Hash(string Block_Hash)
+    {         
         this->Block_Hash = Block_Hash;
     }
 
@@ -58,7 +62,8 @@ long BlockChain_size =0;
         return Block_Hash;
     }
 
-    long Block::get_BlockNumber(){
+    long Block::get_BlockNumber()
+    {
         return BlockNumber;
     }
 
@@ -69,10 +74,11 @@ long BlockChain_size =0;
 
     void Block::fill_transactions_in_the_block()
     {
-        //int total_transactions = List_of_Transaction_ID.size();
+        // int total_transactions = List_of_Transaction_ID.size();
         
         long total_transactions = Mempool_size;
-        for(int i = 0;i<total_transactions;i++)
+        
+        for(int i = 0; i<total_transactions; i++)
         {
             Transactions_in_the_Block[i] = Mempool[i];
         }
@@ -90,15 +96,12 @@ long BlockChain_size =0;
         return Transactions_in_the_Block[i].get_Transaction_ID();
     }
 
-
-
-
 void create_Genesis_Block()
 {
     Block b;
     b.set_Block_Hash( create_block_hash(b) );
     b.set_Previous_Hash();
-    add_Block_to_BlockChain(b); //conitnuing after 10 mins
+    add_Block_to_BlockChain(b); // conitnuing after 10 mins
 }
 
 // this function will be encryption / hashing header file where all other functions also exist
@@ -113,137 +116,108 @@ void add_Block_to_BlockChain(Block &b)
     BlockChain[BlockChain_size -1] = b;
 }
 
-void display_Blockchain(){
+void display_Blockchain()
+{
+    ClearOS();
     
-    if(BlockChain_size == 1){
-        cout<<"BlockChain is Empty. No Blocks to Display"<<endl;
+    if(BlockChain_size == 1)
+    {
+        cout << "\n !!BlockChain is Empty, No Blocks to Display!! ";
         return ;
     }
-    else{
+    else
+    {
+        cout << "\n\n ********** Blocks in BlockChain ********** ";
         
-        for(int i = 1; i < BlockChain_size; i++){
-    
-            cout<<" ---------------------"<<endl;
-            cout<<"Block ID: " << BlockChain[i].get_BlockNumber()<<endl;
-            cout<<"Previous Block hash: "<<BlockChain[i].get_Previous_Hash()<<endl;
-            cout<<"Current Block hash: "<<BlockChain[i].get_Block_Hash()<<endl;
-            cout<<"Transactions inside the Block: "<<endl;
-            cout<<"{"<<endl;
-    
-            for(int j =0;j<BlockChain[i].get_No_of_Transactions_in_Block();j++){
-                cout<<"\t Transaction No: "<<j+1<<endl;
-                cout<<"\t Transaction ID: "<<BlockChain[i].get_transaction_ID_from_block(j)<<endl;
-                cout<<"\t Transaction Message: "<<BlockChain[i].get_transaction_msg_from_block(j)<<endl;
-                cout<<endl;
+        for(int i = 1; i < BlockChain_size; i++)
+        {
+            cout << "\n\n ************************************************** "
+                 << "\n Block ID : " << BlockChain[i].get_BlockNumber()
+                 << "\n Previous Block hash : " << BlockChain[i].get_Previous_Hash()
+                 << "\n Current Block hash : " << BlockChain[i].get_Block_Hash()
+                 << "\n Transactions inside the Block : "
+                 << "\n { ";
+                
+            for(int j=0; j<BlockChain[i].get_No_of_Transactions_in_Block(); j++)
+            {
+                cout << "\n\t Transaction No : " << j+1
+                     << "\n\t Transaction ID : " << BlockChain[i].get_transaction_ID_from_block(j)
+                     << "\n\t Transaction Message : " << BlockChain[i].get_transaction_msg_from_block(j) << endl;
             }
-            cout<<"}"<<endl;
-            cout<<endl;
+            
+            cout<<"\n } ";
         }
     }
-
 }
-void mine_block(){
+
+void mine_block()
+{
+    ClearOS();
     
-    if(Mempool_size == 0){
-        cout<<"No Blocks to Mine. Mempool is Empty."<<endl;
+    if(Mempool_size == 0)
+    {
+        cout << "\n !!No Blocks to Mine, Mempool is Empty!! ";
         return ;
     }
+    
     Block b;
     
     b.fill_transactions_in_the_block();
     b.set_Previous_Hash();
-    b.set_Block_Hash(create_block_hash(b));  //this create_block_hash(Block &b) will be there is another header which will have hashing functions
-    cout<<"Block Mined Successfully."<<endl;
-    cout<<b.get_Previous_Hash()<<endl;
+    b.set_Block_Hash(create_block_hash(b));  // this create_block_hash(Block &b) will be there is another header which will have hashing functions
+    
+    cout << "\n !!Block Mined Successfully!! ";
     add_Block_to_BlockChain(b);
     
-    cout<<"Block Added to BlockChain Successfully."<<endl;
+    cout << "\n !!Block Added to BlockChain Successfully!! ";
     
-    for(int i = 0;i<Mempool_size;i++)
+    for(int i = 0; i<Mempool_size; i++)
     {
         Ledger[i + Ledger_size] = Mempool[i];   // adding these to ledger as they are mined
     }
     
-    cout<<"Transactions are added to Ledger."<<endl;
+    cout << "\n !!Transactions are added to Ledger!! ";
     
     Ledger_size = Ledger_size + Mempool_size;   //  updating the Ledger_size
     Mempool_size = 0;   //  freeing Mempool
     
-    cout<<"Clearing Mempool"<<endl;
+    cout << "\n !!Clearing Mempool!! ";
 
-    
     // delete the block b too at the last
 }
 
-void display_Ledger(){
-    if(Ledger_size == 0){
-        cout<<"Ledger is Empty."<<endl;
-        return ;
-    }
-    cout<<"Ledger: ----------->"<<endl;
-    for(int i = 0;i<Ledger_size;i++)
+void display_Ledger()
+{
+    ClearOS();
+    
+    if(Ledger_size == 0)
     {
-        cout<<"\t"<<Ledger[i].get_Transaction_ID()<<" : "<<Ledger[i].get_transaction_msg();
-        cout<<endl;
+        cout << "\n !!Ledger is Empty!! ";
+        return ;
     }
     
+    cout << "\n\n ********** Ledger ********** ";
+    
+    for(int i = 0;i<Ledger_size;i++)
+    {
+        cout << "\n " << Ledger[i].get_Transaction_ID() << " : " << Ledger[i].get_transaction_msg();
+    }
 }
 
-void display_Mempool(){
-    if(Mempool_size == 0){
-        cout<<"Mempool is Empty."<<endl;
+void display_Mempool()
+{
+    ClearOS();
+    
+    if(Mempool_size == 0)
+    {
+        cout << "\n !!Mempool is Empty!! ";
         return ;
     }
-    cout<<"Mempool: --------->"<<endl;
+    
+    cout << "\n\n ********** Mempool ********** ";
+    
     for(int i = 0;i<Mempool_size;i++)
     {
-        cout<<"\t"<<Mempool[i].get_Transaction_ID()<<" : "<<Mempool[i].get_transaction_msg();
-        cout<<endl;
+        cout << "\n " << Mempool[i].get_Transaction_ID() << " : " << Mempool[i].get_transaction_msg();
     }
-
 }
-
-
-
-
-// void admin_main_menu(){
-
-//     cout<<endl;
-//     cout<<"Welcome ADMIN.! Please select one of the following operations: "<<endl;
-//     cout<<"1. Mine a Block "<<endl;
-//     cout<<"2. Display BlockChain "<<endl;
-//     cout<<"3. Display Ledger "<<endl;
-//     cout<<"4. Display Mempool "<<endl;
-//     cout<<"5. Donate money "<<endl;
-//     int choose;
-//     cout<<"\nEnter your choice: ";
-//     cin>>choose;
-//     cout<<endl;
-//     switch(choose){
-//         case 1: {
-//             mine_block();
-//             break;
-//         }
-//         case 2: {
-//             display_Blockchain();
-//             break;
-//         }
-//         case 3: {
-//             display_Ledger();
-//             break;
-//         }
-//         case 4: {
-//             display_Mempool();
-//             break;
-//         }
-//         case 5: {
-//             donate_money_UI("","");
-//             break;
-//         }
-//         default: {
-//             cout<<"This feature is currntly being developed."<<endl;
-//             break;
-//         }
-        
-//     }
-// }
