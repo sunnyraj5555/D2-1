@@ -18,6 +18,7 @@ void main_menu();
 void admin_main_menu();
 void user_menu();
 
+bool Is_Number(string line);
 void org_list_menu();
 void post_list_menu();
 void donate_to_post_menu(long Post_ID);
