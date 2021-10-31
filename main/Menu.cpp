@@ -9,6 +9,7 @@
 #include <fstream>
 #include <cstring>
 #include <iomanip>
+#include <cstdlib>
 
 #include "main.h"
 #include "Menu.h"
@@ -23,7 +24,7 @@ void main_menu()
 {
     MAIN:
         
-        int choose;
+        char choose;
         
         ClearOS();
         Title();
@@ -37,16 +38,16 @@ void main_menu()
         
         switch(choose)
         {
-            case 1: user_login();
+            case '1': user_login();
             break;
             
-            case 2: create_user();
+            case '2': {create_user(); PressEnter();}
             break;
             
-            case 3: admin_login();
+            case '3': admin_login();
             break;
             
-            case 4: exit(0);
+            case '4': exit(0);
             
             default: cout << "\n !!Invalid Input!! ";
         }
@@ -58,7 +59,7 @@ void admin_main_menu()
 {
     ADMIN:
         
-        int choose;
+        char choose;
         
         ClearOS();
         Title();
@@ -75,22 +76,22 @@ void admin_main_menu()
         
         switch(choose)
         {
-            case 1: {mine_block(); PressEnter();}
+            case '1': {mine_block(); PressEnter();}
             break;
             
-            case 2: {display_Blockchain(); PressEnter();}
+            case '2': {display_Blockchain(); PressEnter();}
             break;
             
-            case 3: {display_Ledger(); PressEnter();}
+            case '3': {display_Ledger(); PressEnter();}
             break;
             
-            case 4: {display_Mempool(); PressEnter();}
+            case '4': {display_Mempool(); PressEnter();}
             break;
             
-            case 5: {display_UserList(); PressEnter();}
+            case '5': {display_UserList(); PressEnter();}
             break;
             
-            case 6: main_menu();
+            case '6': main_menu();
             break;
             
             default: cout << "\n !!Invalid Input!! ";
@@ -103,12 +104,13 @@ void user_menu()
 {
     USER:
         
-        int choose;
+        char choose;
         
         ClearOS();
         Title();
         
-        cout << "\n\n Welcome " << UserList[Logged_User_ID - 1].get_User_Name() << " !! \n Please select one of the following operations :- "
+        cout << "\n\n Welcome " << UserList[Logged_User_ID - 1].get_User_Name() << " !! \n Your Public Key : " << UserList[Logged_User_ID - 1].get_User_Public_Key() 
+             << "\n\n Please select one of the following operations :- "
              << "\n\n 1. Donate Money "
              << "\n 2. Create Post "
              << "\n 3. Logout "
@@ -117,13 +119,13 @@ void user_menu()
         
         switch(choose)
         {
-            case 1: post_list_menu();
+            case '1': post_list_menu();
             break;
             
-            case 2: org_list_menu();
+            case '2': org_list_menu();
             break;
             
-            case 3: main_menu();
+            case '3': main_menu();
             break;
             
             default: cout << "\n !!Invalid Input!! ";
@@ -132,13 +134,21 @@ void user_menu()
     goto USER;
 }
 
+// To check the string ia a number
+bool Is_Number(string line)
+{
+    char* p;
+    strtol(line.c_str(), &p, 10);
+    return *p == 0;
+}
+
 void org_list_menu()
 {
     ORGLISTMENU:
         
         ClearOS();
         
-        int choose1;
+        char choose1;
         
         cout << "\n\n ********** List of Organizations ********** ";
         
@@ -152,31 +162,41 @@ void org_list_menu()
         
         switch(choose1)
         {
-            case 1:
+            case '1':
             {
-                long choose2;
+                string choose2a;
+                long choose2b;
                 
                 cout << "\n\n Enter the Organization ID you want to link from above list "
                      << "\n Enter Your Choice : ";
-                cin >> choose2;
+                cin >> choose2a;
                 
-                if (choose2 >= 1 && choose2 <= OrgList_size)
+                if(Is_Number(choose2a))
                 {
-                    enter_post_details(choose2);
+                    choose2b = stoi(choose2a);
+                    
+                    if (choose2b >= 1 && choose2b <= OrgList_size)
+                    {
+                        enter_post_details(choose2b);
+                    }
+                    else
+                    {
+                        cout << "\n !!Invalid Organization ID!! ";
+                        goto ORGLISTMENU;
+                    }
                 }
                 else
                 {
                     cout << "\n !!Invalid Organization ID!! ";
                     goto ORGLISTMENU;
-                }
-                
+                }                
             }
             break;
             
-            case 2: create_org();
+            case '2': create_org();
             break;
             
-            case 3: user_menu();
+            case '3': user_menu();
             break;
             
             default: cout << "\n !!Invalid Input!! ";
@@ -184,7 +204,6 @@ void org_list_menu()
         
     goto ORGLISTMENU;
 }
-
 
 void post_list_menu()
 {
@@ -199,7 +218,8 @@ void post_list_menu()
             return ;
         }
         
-        long choose1;
+        string choose1;
+        int choose1b = 0;
         
         cout << "\n\n ********** List of Posts ********** ";
         
@@ -210,7 +230,20 @@ void post_list_menu()
              << "\n\n Enter Your Choice : ";
         cin >> choose1;
         
-        switch(choose1)
+        if(Is_Number(choose1) == 1)
+		{
+            stringstream ss1(choose1);
+            ss1 >> choose1b;
+        }
+        else
+		{
+            cout << "\n !!Invalid Input!! ";
+            PressEnter();
+			
+            goto POSTLISTMENU;
+        }
+        
+        switch(choose1b)
         {
             case 0: user_menu();
             break;
@@ -218,9 +251,32 @@ void post_list_menu()
             default: 
             {
                 ClearOS();
-                
-                display_Post(choose1);
-                donate_to_post_menu(choose1);
+                int count = 0;
+				
+                for(int i=0; i<PostList_size; i++)
+                {
+                    if(PostList[i].get_Post_ID() == choose1b)
+                    {
+                        count = -1;
+                        break;
+                    }
+                    else
+                    {
+                        count++;
+                    }
+                }
+				
+                if(count == -1)
+				{
+                    display_Post(choose1b);
+                    donate_to_post_menu(choose1b);
+                    PressEnter();
+                }
+                else
+				{
+                    cout << "\n !!Post Not Available!! ";
+                    PressEnter();
+                }
             }
         }
         
@@ -229,7 +285,7 @@ void post_list_menu()
 
 void donate_to_post_menu(long Post_ID)
 {
-    int choose2;
+    char choose2;
     
     cout << "\n\n 1. Donate to this Post "
          << "\n 2. Return to Post list "
@@ -238,10 +294,10 @@ void donate_to_post_menu(long Post_ID)
     
     switch(choose2)
     {
-        case 1: donate_money_UI(Post_ID);
+        case '1': donate_money_UI(Post_ID);
         break;
         
-        case 2: post_list_menu();
+        case '2': post_list_menu();
         break;
         
         default: cout << "\n !!Invalid Input!! ";
