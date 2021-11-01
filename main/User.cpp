@@ -9,6 +9,7 @@
 #include <fstream>
 #include <cstring>
 #include <iomanip>
+#include <regex>
 
 #include "main.h"
 #include "Menu.h"
@@ -123,6 +124,111 @@ void admin_init()
     cout << "\n !!Admin Created!! " << endl;
 }
 
+// ================= To Check Phone Number =================
+const int MAX = 10;
+ 
+// Function that returns true if ch is a digit
+bool IsDigit_Phone_No(char ch)
+{
+    if (ch >= '0' && ch <= '9')
+    {
+        return true;
+    }
+    
+    return false;
+}
+ 
+// Function that returns true if str contains all the digits from 0 to 9
+bool Check_Phone_No(string str)
+{
+    int len = str.length();
+    
+    // To mark the present digits
+    bool present[MAX] = { false };
+ 
+    // For every character of the string
+    for (int i = 0; i < len; i++) 
+    {
+        // If the current character is a digit
+        if (IsDigit_Phone_No(str[i])) 
+        {
+            // Mark the current digit as present
+            int digit = str[i] - '0';
+            present[digit] = true;
+        }
+    }
+ 
+    // For every digit from 0 to 9
+    for (int i = 0; i < MAX; i++)
+    {
+        if (!present[i] && !(len == 10))
+        {
+            return false;
+        }
+    }
+    
+    return true;
+}
+
+// ================= To Check Email ID =================
+bool Check_Email_ID(const string& email)
+{
+    // Regular expression definition
+    const regex pattern("(\\w+)(\\.|_)?(\\w*)@(\\w+)(\\.(\\w+))+");
+  
+    // Match the string pattern with regular expression
+    return regex_match(email, pattern);
+}
+
+// ================= To Check Password Strength ================= 
+void Check_Password_Strength(string& input) 
+{
+    int n = input.length();
+    
+    bool hasLower = false, hasUpper = false;
+    bool hasDigit = false, specialChar = false;
+    string normalChars = "abcdefghijklmnopqrstu" "vwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890 ";
+    
+    for (int i = 0; i < n; i++) 
+    {
+        if (islower(input[i]))
+        {
+            hasLower = true;
+        }
+        if (isupper(input[i]))
+        {
+            hasUpper = true;
+        }
+        if (isdigit(input[i]))
+        {
+            hasDigit = true;
+        }
+        
+        size_t special = input.find_first_not_of(normalChars);
+        
+        if (special != string::npos)
+        {
+            specialChar = true;
+        }
+    }
+    
+    // Check Password Strength
+    cout << "\n Password Strength : ";
+    
+    if (hasLower && hasUpper && hasDigit && specialChar && (n >= 8))
+    {
+        cout << " Strong ";
+    }
+    else if ((hasLower || hasUpper) && specialChar && (n >= 6))
+    {
+        cout << " Moderate ";
+    }
+    else
+    {
+        cout << " Weak ";
+    }
+}
+
 void create_user()
 {
     ClearOS();
@@ -135,9 +241,39 @@ void create_user()
     
     cin.ignore();
     cout << "\n\n Enter Name : "; getline(cin, Name);
+    
+    PHONENO:
     cout << "\n Enter Phone_No : "; getline(cin, Phone_No);
+    
+    if(Check_Phone_No(Phone_No) == false)
+    {
+        cout << "\n !!Invalid Phone Number!! !!Please Enter Again!! \n";
+        goto PHONENO;
+    }
+    
+    EMAILID:
     cout << "\n Enter Email_ID : "; getline(cin, Email_ID);
+    
+    if(Check_Email_ID(Email_ID) == 0)
+    {
+        cout << "\n !!Invalid Email ID!! !!Please Enter Again!! \n";
+        goto EMAILID;
+    }
+    
+    char ch;
+    
     cout << "\n Enter Password : "; getline(cin, Password);
+    
+    PASSWORD:
+    Check_Password_Strength(Password);
+    
+    cout << "\n Want to change Password, enter Y or N : "; cin >> ch;
+    
+    if(ch == 'Y' || ch == 'y')
+    {
+        cout << "\n Enter Password : "; cin.ignore(); getline(cin, Password);
+        goto PASSWORD;
+    }
 
     User u;
     u.set_User_ID();
@@ -152,7 +288,7 @@ void create_user()
 void generate_keys(User &u)
 {
    keys(u);
-   //detailed implementation in encrytption file, for now hard coding
+   cout << "\n !!Keys Created Successfuly!! ";
 }
 
 void add_user_to_list(User &u)
@@ -246,7 +382,7 @@ void admin_login()
     }
     else
     {
-        cout<<"\n !!Invalid Admin Credentials!! ";
+        cout << "\n !!Invalid Admin Credentials!! ";
         PressEnter();
     }
 }
