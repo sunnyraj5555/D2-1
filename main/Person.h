@@ -58,6 +58,10 @@ extern long Logged_User_ID;
 extern User Admin;
 
 void admin_init();
+bool IsDigit_Phone_No(char ch);
+bool Check_Phone_No(string str);
+bool Check_Email_ID(const string& email);
+void Check_Password_Strength(string& input);
 void create_user();
 void add_user_to_list(User &u);
 void display_UserList();
