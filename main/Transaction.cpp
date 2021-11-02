@@ -74,11 +74,15 @@ void send_transaction_from_client_to_server(Transaction t, long user_priv_key ,l
 
 string prepare_transmission_buffer(Transaction &t, long user_priv_key ,long admin_pub_key)
 {
-    //first extract t.get_transaction_msg()
-    // hash this message
-    // digital sign here
-    // encrypt this with admin public key
-    // append this double cypher with t.get_transaction_msg()
+    // first extract t.get_transaction_msg()
+    // hash this message --> h1
+    // write to file1.txt with hash of transaction msg
+    // digital sign here : 
+    // cypher1 = encode(user.get_User_Private_Key(), user.get_User_EDFactor());
+    // write this encoded msg ( cypher1 ) again in another file2.txt
+    // encrypt this with admin public key:  
+    // cypher2 = encode(Admin.get_User_Public_Key(), Admin.get_User_EDFactor())
+    // final string = append this cypher2 with t.get_transaction_msg()
     // return final string
     return "";
 }
@@ -158,7 +162,7 @@ void donate_money_UI(long Post_ID)
     {
         cout << "\n Enter the amount : "; cin >> amount;
         
-        if(amount <= 0 && amount > PostList[Post_ID - 1].get_amount_left() )
+        if(amount <= 0 || amount > PostList[Post_ID - 1].get_amount_left() )
         {
             cout << "\n !!Invalid Amount!! \n Entered Amount is either less than 1 or more than the amount required ";
         }
