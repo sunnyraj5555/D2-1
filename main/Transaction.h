@@ -48,7 +48,7 @@ extern Transaction Mempool[N];
 Transaction NewTransaction(string sender, string reciever, long amount);
 void donate_money_UI(long Post_ID);
 
-//client side functions
+// client side functions
 string prepare_transmission_buffer(Transaction &t, long user_priv_key ,long admin_pub_key);
 void send_transaction_from_client_to_server(Transaction &t, long user_priv_key ,long admin_pub_key );
 

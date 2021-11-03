@@ -1,10 +1,19 @@
 //============================================================================
-// Name         : main.cpp
+// Name         : D2: Blockchain Based Secure Donation System
 // Authors      : Aryan Mukerji, M Somasekhar, Sunny Raj, Tanishka Vaswani
 // Version      : 1.0
 // Copyright    : MIT License
-// Description  : D2: Blockchain Based Secure Donation System
+// Description  : The aim of this project is to prevent the misappropriation 
+//                misuse of funds that are collected in the name of donation 
+//                or a good charitable cause.
 //============================================================================
+
+/*
+ *  main.cpp
+ *  
+ *  Created on: 1-Oct-2021
+ *     Authors: Aryan Mukerji
+ */
 
 #include <iostream>
 #include <fstream>

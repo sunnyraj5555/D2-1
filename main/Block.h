@@ -19,17 +19,17 @@ class Block
 {
     private:
 
-    long BlockNumber;       //every block has a number
-    Transaction Transactions_in_the_Block[N];       // to store the list of transactions in array of transaction class objects for each transaction
+    long BlockNumber;                           // every block has a number
+    Transaction Transactions_in_the_Block[N];   // to store the list of transactions in array of transaction class objects for each transaction
     int No_of_Transactions_in_Block;            // to store how many transactions are there inside a particular block
     string Previous_Hash , Block_Hash;          // to store prev has and current block hash inside 
 
     public:
 
     Block();
-    void set_Previous_Hash();           // to set previous hash 
-    void set_Block_Hash(string Block_Hash);       // will set the hash of current block
-    void set_BlockNumber();         //  will set the block number accordingly from the current blockchain
+    void set_Previous_Hash();                   // to set previous hash 
+    void set_Block_Hash(string Block_Hash);     // will set the hash of current block
+    void set_BlockNumber();                     //  will set the block number accordingly from the current blockchain
 
     string get_Previous_Hash(); 
     string get_Block_Hash();

@@ -278,7 +278,7 @@ void create_user()
     User u;
     u.set_User_ID();
     u.set_user_details(Name, Phone_No, Email_ID, Password);
-    generate_keys(u);   //this will be in encryption header file
+    generate_keys(u);   // this will be in encryption header file
 
     add_user_to_list(u);
 

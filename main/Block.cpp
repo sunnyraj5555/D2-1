@@ -178,8 +178,8 @@ void mine_block()
     
     cout << "\n !!Transactions are added to Ledger!! ";
     
-    Ledger_size = Ledger_size + Mempool_size;   //  updating the Ledger_size
-    Mempool_size = 0;   //  freeing Mempool
+    Ledger_size = Ledger_size + Mempool_size;   // updating the Ledger_size
+    Mempool_size = 0;   // freeing Mempool
     
     cout << "\n !!Clearing Mempool!! ";
 

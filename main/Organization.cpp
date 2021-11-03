@@ -113,7 +113,7 @@ void create_org()
     long registration_number;
     
     cout << "\n\n Enter the Organization Registration Number : ";
-    cin >> registration_number;
+    cin >> registration_number;                                      //////////// !!! gives error if given character input !!!
     
     if(verify_org(registration_number))
     {

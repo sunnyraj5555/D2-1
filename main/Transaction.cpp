@@ -27,9 +27,9 @@ long Mempool_size = 0;
 long Transaction_Ids = 0;
 
 // Future goals:
-// -----Try to design this stack template of our own Transaction class,
-// -----to directly store the objects of transaction happened till time.
-// -----then to get the id of a transaction we would do --> List_of_Transactions.top().get_Transaction_ID();
+// ----- Try to design this stack template of our own Transaction class,
+// ----- to directly store the objects of transaction happened till time.
+// ----- then to get the id of a transaction we would do --> List_of_Transactions.top().get_Transaction_ID();
 
     void Transaction::set_Transaction(string sender, string reciever, long amount, long Transaction_ID)
     {
@@ -67,9 +67,9 @@ void send_transaction_from_client_to_server(Transaction t, long user_priv_key ,l
     string final_buffer = prepare_transmission_buffer(t, user_priv_key, admin_pub_key);
     
     // send this final buffer via socket of client 
-    //for now just for implementation process passing this string 
-    //via calling the function recieve_transaction_from_client() directly
-    recieve_transaction_from_client(final_buffer, t);    //ideally only buffer will be sent
+    // for now just for implementation process passing this string 
+    // via calling the function recieve_transaction_from_client() directly
+    recieve_transaction_from_client(final_buffer, t);    // ideally only buffer will be sent
 }
 
 string prepare_transmission_buffer(Transaction &t, long user_priv_key ,long admin_pub_key)
@@ -90,8 +90,8 @@ string prepare_transmission_buffer(Transaction &t, long user_priv_key ,long admi
 // ideally only bufer will be recieved
 void recieve_transaction_from_client(string recived_buffer, Transaction &t)
 { 
-    //call verify function here 
-    //ideally verify_transaction(recived_buffer) will return a message, if msg is NULL then the Transaction is fake.
+    // call verify function here 
+    // ideally verify_transaction(recived_buffer) will return a message, if msg is NULL then the Transaction is fake.
     // if message != NULL then we create an object of transaction class 
     // t.set_transaction_msg(message);
     // t.set_Transaction_ID();
@@ -126,18 +126,18 @@ bool verify_transaction(string buffer)
     //     return false;
     // }
     
-    return true; //just returning true for now
+    return true; // just returning true for now
 }
 
 // to create new transaction and return the object with given details
 Transaction NewTransaction(string sender, string reciever, long amount)
 {
     Transaction t;
-    //t.set_Transaction(sender, reciever, amount, List_of_Transaction_ID.size() + 1);
+    // t.set_Transaction(sender, reciever, amount, List_of_Transaction_ID.size() + 1);
     
-    t.set_Transaction(sender, reciever, amount, ++Transaction_Ids ); //  remember to update the Mempool_size after this Transaction is verified.
+    t.set_Transaction(sender, reciever, amount, ++Transaction_Ids ); // remember to update the Mempool_size after this Transaction is verified.
     
-    //List_of_Transaction_ID.push(List_of_Transaction_ID.size() + 1)
+    // List_of_Transaction_ID.push(List_of_Transaction_ID.size() + 1)
     
     return t;
 }
@@ -176,7 +176,7 @@ void donate_money_UI(long Post_ID)
         }
     }
     
-    //Mempool[Mempool_size -1] = NewTransaction(sender, reciever, amount);
+    // Mempool[Mempool_size -1] = NewTransaction(sender, reciever, amount);
     PostList[Post_ID - 1].deduct_money(amount);
 
     UserList[Logged_User_ID - 1].deduct_User_Balance(amount);
