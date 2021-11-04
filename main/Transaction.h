@@ -14,8 +14,6 @@ using namespace std;
 #ifndef TRANSACTION_H
 #define TRANSACTION_H
 
-
-//extern stack<int> List_of_Transaction_ID;
 extern long Mempool_size;
 extern long Ledger_size;
 
@@ -49,8 +47,35 @@ class Transaction
     string get_transaction_msg();
 };
 
-
 extern Transaction Ledger[N];
 extern Transaction Mempool[N];
+Transaction NewTransaction(string sender, string reciever, long amount);
+void donate_money_UI(long Post_ID, string user_priv_key ,string admin_pub_key);
+
+//client side functions
+string prepare_transmission_buffer(Transaction &t, string user_priv_key ,string admin_pub_key);
+void send_transaction_from_client_to_server(Transaction &t, string user_priv_key ,string admin_pub_key );
+
+void recieve_transaction_from_client(string recived_buffer, Transaction &t);
+bool verify_transaction(string buffer);
+
+
+void write_Mempool_size();
+void read_Mempool_size();
+void write_Mempool();
+void read_Mempool();
+
+
+void write_Ledger_size();
+void read_Ledger_size();
+void write_Ledger();
+void read_Ledger();
+
+
+void write_BLockChain_size();
+void read_BlockChain_size();
+void write_BlockChain();
+void read_BlockChain();
+
 
 #endif /* TRANSACTION_H */

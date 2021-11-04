@@ -19,7 +19,6 @@
 
 using namespace std;
 
-
 Block BlockChain[N];
 long BlockChain_size =0;
 
@@ -27,17 +26,16 @@ long BlockChain_size =0;
     {
         No_of_Transactions_in_Block = 0;
         set_BlockNumber();
-        set_Previous_Hash();
     }
 
     void Block::set_Previous_Hash()
     {
-        if(BlockChain_size == 1)
+        if(BlockChain_size == 0)
         {       //for genesis Block
-            Previous_Hash = "";
+            Previous_Hash = "Genesis Block";
         }else
         {
-            Previous_Hash = BlockChain[BlockChain_size - 2].get_Block_Hash();
+            Previous_Hash = BlockChain[BlockChain_size - 1].get_Block_Hash();
         }
     }
 
@@ -47,7 +45,7 @@ long BlockChain_size =0;
 
     void Block::set_BlockNumber()
     {
-        BlockNumber = ++BlockChain_size - 1;
+        BlockNumber = BlockChain_size;
     }
 
     string Block::get_Previous_Hash()
@@ -93,17 +91,14 @@ long BlockChain_size =0;
     }
 
 
-void intitialise_BlockChain_size()
-{
-    BlockChain_size = 0;
-    create_Genesis_Block();
-}
+
 
 void create_Genesis_Block()
 {
     Block b;
     b.set_Block_Hash( create_block_hash(b) );
-    BlockChain[0] = b; //conitnuing after 10 mins
+    b.set_Previous_Hash();
+    add_Block_to_BlockChain(b); //conitnuing after 10 mins
 }
 
 // this function will be encryption / hashing header file where all other functions also exist
@@ -114,6 +109,7 @@ string create_block_hash(Block &b)
 
 void add_Block_to_BlockChain(Block &b)
 {
+    BlockChain_size++;
     BlockChain[BlockChain_size -1] = b;
 }
 
@@ -121,7 +117,7 @@ void display_Blockchain(){
     
     if(BlockChain_size == 1){
         cout<<"BlockChain is Empty. No Blocks to Display"<<endl;
-
+        return ;
     }
     else{
         
@@ -144,6 +140,7 @@ void display_Blockchain(){
             cout<<endl;
         }
     }
+
 }
 void mine_block(){
     
@@ -154,10 +151,10 @@ void mine_block(){
     Block b;
     
     b.fill_transactions_in_the_block();
+    b.set_Previous_Hash();
     b.set_Block_Hash(create_block_hash(b));  //this create_block_hash(Block &b) will be there is another header which will have hashing functions
-    
     cout<<"Block Mined Successfully."<<endl;
-    
+    cout<<b.get_Previous_Hash()<<endl;
     add_Block_to_BlockChain(b);
     
     cout<<"Block Added to BlockChain Successfully."<<endl;
@@ -189,6 +186,7 @@ void display_Ledger(){
         cout<<"\t"<<Ledger[i].get_Transaction_ID()<<" : "<<Ledger[i].get_transaction_msg();
         cout<<endl;
     }
+    
 }
 
 void display_Mempool(){
@@ -202,6 +200,7 @@ void display_Mempool(){
         cout<<"\t"<<Mempool[i].get_Transaction_ID()<<" : "<<Mempool[i].get_transaction_msg();
         cout<<endl;
     }
+
 }
 
 

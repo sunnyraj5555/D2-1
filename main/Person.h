@@ -68,29 +68,39 @@ void generate_keys(User &u);   // this will be in the encryption headerfile
 
 // ============================== Organisation.cpp =============================
 
-class Organization
-{
-    private:
-    
-    string org_name;
-    string org_address;
-    long registration_number; // This is the registration number provided by government
-    string org_phone_number;
-    long Org_ID;    // This is the organiztion ID provided by D2 to all Organization
+class Organization{
   
-    public:
+  private:
   
-    void set_Org_ID();
-    long get_Org_ID();
+// Creating 5 variables:
+// org_name, org_address, org_phone_number is to receive name, address and phone number 
+  string org_name;
+  string org_address;
+  long registration_number; // This is the registration number provided by government
+  string org_phone_number;
+  long Org_ID; // This is the organiztion id provided by D2 to all Organization
   
-    void set_org_details(string org_name, string org_address, string org_phone_number );
-    void get_org_details();
+  public:
   
-    string get_org_name();
-    string get_org_address();
-    string get_org_phone_number();
-    void set_registration_number(long registration_number);
-    long get_registration_number();
+  void set_Org_ID();
+  
+  long get_Org_ID();
+  
+  void set_org_details(string org_name, string org_address, string org_phone_number );
+  
+  void get_org_details();
+  
+  string get_org_name();
+  
+  string get_org_address();
+  
+  string get_org_phone_number();
+ 
+  void set_registration_number(long registration_number);
+  
+  long get_registration_number();
+  
+  
 };
 
 extern Organization OrgList[N];
@@ -102,5 +112,7 @@ bool verify_org(long Org_ID);
 void create_org();
 
 void intitialise_OrgList();
+
+
 
 #endif /* PERSON_H */
