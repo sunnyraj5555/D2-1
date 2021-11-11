@@ -40,6 +40,10 @@ long BlockChain_size = 0;
             Previous_Hash = BlockChain[BlockChain_size - 1].get_Block_Hash();
         }
     }
+
+    void Block::set_Previous_Hash(string Previous_Hash){
+        this->Previous_Hash = Previous_Hash;
+    }
     
     // this function will be called after SHA hashing the block object
     void Block::set_Block_Hash(string Block_Hash)
@@ -50,6 +54,14 @@ long BlockChain_size = 0;
     void Block::set_BlockNumber()
     {
         BlockNumber = BlockChain_size;
+    }
+
+    void Block::set_BlockNumber(long i){
+        BlockNumber = i;
+    }
+
+    void Block::set_No_of_Transactions_in_Block(long i){
+        No_of_Transactions_in_Block =i;
     }
 
     string Block::get_Previous_Hash()
@@ -72,6 +84,10 @@ long BlockChain_size = 0;
         return No_of_Transactions_in_Block;
     }
 
+    Transaction Block::get_Transactions_in_the_Block(int i){
+        return Transactions_in_the_Block[i];
+    }
+
     void Block::fill_transactions_in_the_block()
     {
         // int total_transactions = List_of_Transaction_ID.size();
@@ -84,6 +100,10 @@ long BlockChain_size = 0;
         }
 
         No_of_Transactions_in_Block = total_transactions;
+    }
+
+    void Block::fill_transactions_in_the_block(Transaction &t, int i){
+        Transactions_in_the_Block[i] = t;
     }
 
     string Block::get_transaction_msg_from_block(int i)
@@ -112,8 +132,8 @@ string create_block_hash(Block &b)
 
 void add_Block_to_BlockChain(Block &b)
 {
+    BlockChain[BlockChain_size] = b;
     BlockChain_size++;
-    BlockChain[BlockChain_size -1] = b;
 }
 
 void display_Blockchain()
@@ -178,8 +198,8 @@ void mine_block()
     
     cout << "\n !!Transactions are added to Ledger!! ";
     
-    Ledger_size = Ledger_size + Mempool_size;   // updating the Ledger_size
-    Mempool_size = 0;   // freeing Mempool
+    Ledger_size = Ledger_size + Mempool_size;   //  updating the Ledger_size
+    Mempool_size = 0;   //  freeing Mempool
     
     cout << "\n !!Clearing Mempool!! ";
 

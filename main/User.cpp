@@ -63,6 +63,9 @@ User Admin;
     {
         this->EDFactor = EDFactor;
     }
+    void User::set_User_Balance(long i){
+        User_Balance = i;
+    }
     
     void User::get_User()
     {

@@ -32,7 +32,10 @@ class Post
     public:
     
     void set_Post_ID();
+    void set_Post_ID(long i);
     long get_Post_ID();
+
+
     
     void set_post_details(string Post_Title, string Post_Description);
     void set_org_details(long Org_ID, string org_name, string org_address, string org_phone_number);
@@ -42,12 +45,19 @@ class Post
     string get_Post_Description();
     
     void get_user_details();
+    string get_user_name();
+    long get_User_ID();
     string get_patient_name();
     
     void get_org_details();
+    long get_Org_ID();
     string get_org_name();
+    string get_org_address();
+    string get_org_phone_number();
 
     void set_amount(long amount_requested);
+    void set_amount_left(long i);
+    void set_amount_collected(long i);
     void deduct_money(long amount_received);
     long get_amount_requested();
     long get_amount_collected();
