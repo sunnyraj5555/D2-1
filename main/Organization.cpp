@@ -41,6 +41,9 @@ long OrgList_size = 0;
     {
         this->Org_ID = OrgList_size + 1;
     }
+    void Organization::set_Org_ID(long i){
+        Org_ID = i;
+    }
     
     long Organization::get_Org_ID()
     {
@@ -113,7 +116,8 @@ void create_org()
     long registration_number;
     
     cout << "\n\n Enter the Organization Registration Number : ";
-    cin >> registration_number;                                      //////////// !!! gives error if given character input !!!
+    cin >> registration_number;
+    //////////// !!! gives error if given character input !!!	
     
     if(verify_org(registration_number))
     {
@@ -130,25 +134,25 @@ void intitialise_OrgList()
     Organization org1, org2, org3, org4;
     
     org1.set_Org_ID();
-    org1.set_registration_number(2101);
+    org1.set_registration_number(1);
     org1.set_org_details("Nazareth Hospital", "Prayagraj, Uttar Pradesh", "7393254831");
     
     add_org_to_list(org1);
     
     org2.set_Org_ID();
-    org2.set_registration_number(1002);
+    org2.set_registration_number(2);
     org2.set_org_details("Medanta Medicity", "Gurugram, Haryana", "8527690666");
 
     add_org_to_list(org2);
     
     org3.set_Org_ID();
-    org3.set_registration_number(2103);
+    org3.set_registration_number(3);
     org3.set_org_details("Priti Hospital", "Prayagraj, Uttar Pradesh", "6393283820");
     
     add_org_to_list(org3);
     
     org4.set_Org_ID();
-    org4.set_registration_number(2103);
+    org4.set_registration_number(4);
     org4.set_org_details("Lalitha Hospital", "New Delhi, Delhi", "9811898880");
     
     add_org_to_list(org4);
