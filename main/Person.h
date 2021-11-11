@@ -82,11 +82,12 @@ class Organization
     string org_address;
     long registration_number; // This is the registration number provided by government
     string org_phone_number;
-    long Org_ID;              // This is the organiztion ID provided by D2 to all Organization
+    long Org_ID;    // This is the organiztion ID provided by D2 to all Organization
   
     public:
   
     void set_Org_ID();
+    void set_Org_ID(long i);
     long get_Org_ID();
   
     void set_org_details(string org_name, string org_address, string org_phone_number );
@@ -108,5 +109,6 @@ bool verify_org(long Org_ID);
 void create_org();
 
 void intitialise_OrgList();
+
 
 #endif /* PERSON_H */
