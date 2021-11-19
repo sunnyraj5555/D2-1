@@ -26,6 +26,7 @@
 #include "Transaction.h"
 #include "Post.h"
 #include "Block.h"
+#include "ReadWrite.h"
 
 using namespace std;
 
@@ -70,6 +71,8 @@ int main()
     
     ClearOS();
     
+    read_all();
+
     main_menu();
     
     return 0;

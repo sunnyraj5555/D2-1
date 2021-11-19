@@ -17,6 +17,7 @@
 #include "Transaction.h"
 #include "Post.h"
 #include "Block.h"
+#include "ReadWrite.h"
 
 using namespace std;
 
@@ -47,7 +48,7 @@ void main_menu()
             case '3': admin_login();
             break;
             
-            case '4': exit(0);
+            case '4': {write_all(); exit(0);}
             
             default: cout << "\n !!Invalid Input!! ";
         }
