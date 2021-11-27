@@ -321,6 +321,7 @@ void display_UserList()
         cout << "\n Password : " << UserList[i].get_User_Password();
         cout << "\n Private Key : " << UserList[i].get_User_Private_Key();
         cout << "\n Public Key : " << UserList[i].get_User_Public_Key();
+		cout << "\n User Balance : " << UserList[i].get_User_Balance();
     }
 }
 
