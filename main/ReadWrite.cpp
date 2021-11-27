@@ -72,8 +72,8 @@ void read_Transaction_Ids(){
 	fin >> Transaction_Ids;
 	  
 	fin.close();
-    cout<<"reading size"<<endl;
-    cout<<Transaction_Ids<<endl;
+    //cout<<"reading size"<<endl;
+    //cout<<Transaction_Ids<<endl;
 }
 
 void write_Transaction_Ids(){
@@ -171,8 +171,8 @@ void read_Mempool_size(){
 	fin >> Mempool_size;
 	  
 	fin.close();
-    cout<<"reading size"<<endl;
-    cout<<Mempool_size<<endl;
+    //cout<<"reading size"<<endl;
+    //cout<<Mempool_size<<endl;
 }
 
 
@@ -229,8 +229,8 @@ void read_Ledger_size(){
 	fin >> Ledger_size;
 	  
 	fin.close();
-    cout<<"reading size"<<endl;
-    cout<<Ledger_size<<endl;
+    //cout<<"reading size"<<endl;
+    //cout<<Ledger_size<<endl;
 }
 
 void write_Ledger(){
@@ -376,8 +376,8 @@ void read_BlockChain_size(){
 	fin >> BlockChain_size;
 	  
 	fin.close();
-    cout<<"reading size"<<endl;
-    cout<<BlockChain_size<<endl;
+    //cout<<"reading size"<<endl;
+    //cout<<BlockChain_size<<endl;
 }
 
 void write_BlockChain(){
@@ -507,8 +507,8 @@ void read_OrgList_size(){
 	fin >> OrgList_size;
 	  
 	fin.close();
-    cout<<"reading size"<<endl;
-    cout<<OrgList_size<<endl;
+    //cout<<"reading size"<<endl;
+    //cout<<OrgList_size<<endl;
 }
 
 void write_OrgList(){
@@ -742,8 +742,8 @@ void read_PostList_size(){
 	fin >> PostList_size;
 	  
 	fin.close();
-    cout<<"reading size"<<endl;
-    cout<<PostList_size<<endl;
+    //cout<<"reading size"<<endl;
+    //cout<<PostList_size<<endl;
 }
 
 void write_PostList(){
@@ -929,8 +929,8 @@ void read_UserList_size(){
 	fin >> UserList_size;
 	  
 	fin.close();
-    cout<<"reading size"<<endl;
-    cout<<UserList_size<<endl;
+    //cout<<"reading size"<<endl;
+    //cout<<UserList_size<<endl;
 
 }
 void write_UserList(){
