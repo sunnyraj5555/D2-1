@@ -110,11 +110,14 @@ void user_menu()
         ClearOS();
         Title();
         
-        cout << "\n\n Welcome " << UserList[Logged_User_ID - 1].get_User_Name() << " !! \n Your Public Key : " << UserList[Logged_User_ID - 1].get_User_Public_Key() 
+        cout << "\n\n Welcome " << UserList[Logged_User_ID - 1].get_User_Name() 
+			 << " !! \n Your Public Key : " << UserList[Logged_User_ID - 1].get_User_Public_Key() 
+			 << "\n Your Balance : " << UserList[Logged_User_ID - 1].get_User_Balance()
              << "\n\n Please select one of the following operations :- "
              << "\n\n 1. Donate Money "
              << "\n 2. Create Post "
-             << "\n 3. Logout "
+			 << "\n 3. Display BlockChain "
+             << "\n 4. Logout "
              << "\n\n Enter Your Choice : ";
         cin >> choose;
         
@@ -125,8 +128,11 @@ void user_menu()
             
             case '2': org_list_menu();
             break;
+			
+			case '3': {display_Blockchain(); PressEnter();}
+            break;
             
-            case '3': main_menu();
+            case '4': main_menu();
             break;
             
             default: cout << "\n !!Invalid Input!! ";
