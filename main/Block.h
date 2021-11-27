@@ -46,7 +46,11 @@ class Block
     // also updating the value of No_of_Transactions_in_Block variable = Transaction_Array size
     void fill_transactions_in_the_block();
     void fill_transactions_in_the_block(Transaction &t, int i);
+	
     string get_transaction_msg_from_block(int i);
+	string get_sender_of_transaction_from_block(int i);
+	string get_reciever_of_transaction_from_block(int i);
+	long long get_amount_of_transaction_from_block(int i);
     long get_transaction_ID_from_block(int i);
 };
 
