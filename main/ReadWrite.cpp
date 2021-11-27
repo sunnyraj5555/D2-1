@@ -58,7 +58,7 @@ void write_all(){
     write_UserList_size();
     write_UserList();
 
-    cout<<"Write Successful"<<endl;
+    //cout<<"Write Successful"<<endl;
 }
 //-------------------FILE HANDELING MODULES / FUNCTIONS-------------------------------------------------
 
@@ -83,7 +83,7 @@ void write_Transaction_Ids(){
     fout << Transaction_Ids;
     
 	fout.close();
-	cout<<"written size"<<endl;
+	// cout<<"written size"<<endl;
 }
 
 //-------------------- CSV Generation of Transactions --------------------------------------------------
@@ -160,7 +160,7 @@ void write_Mempool_size(){
     fout << Mempool_size;
     
 	fout.close();
-	cout<<"written size"<<endl;
+	//cout<<"written size"<<endl;
 }
 
 void read_Mempool_size(){
@@ -220,7 +220,7 @@ void write_Ledger_size(){
     fout << Ledger_size;
     
 	fout.close();
-	cout<<"written size"<<endl;
+	//cout<<"written size"<<endl;
 }
 
 void read_Ledger_size(){
@@ -364,7 +364,7 @@ void write_BlockChain_size(){
     fout << BlockChain_size;
     
 	fout.close();
-	cout<<"written size"<<endl;
+	//cout<<"written size"<<endl;
 }
 
 void read_BlockChain_size(){
@@ -428,7 +428,7 @@ string create_Organization_string(Organization &o){
     s += o.get_org_address();
     s += "~";
     s += o.get_org_phone_number();
-    cout<<s<<endl;
+    //cout<<s<<endl;
     return s;
 }
 
@@ -496,7 +496,7 @@ void write_OrgList_size(){
     fout << OrgList_size;
     
 	fout.close();
-	cout<<"written size"<<endl;
+	//cout<<"written size"<<endl;
 }
 
 void read_OrgList_size(){
@@ -731,7 +731,7 @@ void write_PostList_size(){
     fout << PostList_size;
     
 	fout.close();
-	cout<<"written size"<<endl;
+	//cout<<"written size"<<endl;
 }
 
 void read_PostList_size(){
@@ -918,7 +918,7 @@ void write_UserList_size(){
     fout << UserList_size;
     
 	fout.close();
-	cout<<"written size"<<endl;
+	//cout<<"written size"<<endl;
 
 }
 void read_UserList_size(){
