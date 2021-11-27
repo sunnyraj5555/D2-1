@@ -58,7 +58,7 @@ void write_all(){
     write_UserList_size();
     write_UserList();
 
-    cout<<"Write Successful"<<endl;
+    //cout<<"Write Successful"<<endl;
 }
 //-------------------FILE HANDELING MODULES / FUNCTIONS-------------------------------------------------
 
@@ -72,8 +72,8 @@ void read_Transaction_Ids(){
 	fin >> Transaction_Ids;
 	  
 	fin.close();
-    cout<<"reading size"<<endl;
-    cout<<Transaction_Ids<<endl;
+    //cout<<"reading size"<<endl;
+    //cout<<Transaction_Ids<<endl;
 }
 
 void write_Transaction_Ids(){
@@ -83,7 +83,7 @@ void write_Transaction_Ids(){
     fout << Transaction_Ids;
     
 	fout.close();
-	cout<<"written size"<<endl;
+	// cout<<"written size"<<endl;
 }
 
 //-------------------- CSV Generation of Transactions --------------------------------------------------
@@ -160,7 +160,7 @@ void write_Mempool_size(){
     fout << Mempool_size;
     
 	fout.close();
-	cout<<"written size"<<endl;
+	//cout<<"written size"<<endl;
 }
 
 void read_Mempool_size(){
@@ -171,8 +171,8 @@ void read_Mempool_size(){
 	fin >> Mempool_size;
 	  
 	fin.close();
-    cout<<"reading size"<<endl;
-    cout<<Mempool_size<<endl;
+    //cout<<"reading size"<<endl;
+    //cout<<Mempool_size<<endl;
 }
 
 
@@ -220,7 +220,7 @@ void write_Ledger_size(){
     fout << Ledger_size;
     
 	fout.close();
-	cout<<"written size"<<endl;
+	//cout<<"written size"<<endl;
 }
 
 void read_Ledger_size(){
@@ -229,8 +229,8 @@ void read_Ledger_size(){
 	fin >> Ledger_size;
 	  
 	fin.close();
-    cout<<"reading size"<<endl;
-    cout<<Ledger_size<<endl;
+    //cout<<"reading size"<<endl;
+    //cout<<Ledger_size<<endl;
 }
 
 void write_Ledger(){
@@ -364,7 +364,7 @@ void write_BlockChain_size(){
     fout << BlockChain_size;
     
 	fout.close();
-	cout<<"written size"<<endl;
+	//cout<<"written size"<<endl;
 }
 
 void read_BlockChain_size(){
@@ -376,8 +376,8 @@ void read_BlockChain_size(){
 	fin >> BlockChain_size;
 	  
 	fin.close();
-    cout<<"reading size"<<endl;
-    cout<<BlockChain_size<<endl;
+    //cout<<"reading size"<<endl;
+    //cout<<BlockChain_size<<endl;
 }
 
 void write_BlockChain(){
@@ -428,7 +428,7 @@ string create_Organization_string(Organization &o){
     s += o.get_org_address();
     s += "~";
     s += o.get_org_phone_number();
-    cout<<s<<endl;
+    //cout<<s<<endl;
     return s;
 }
 
@@ -496,7 +496,7 @@ void write_OrgList_size(){
     fout << OrgList_size;
     
 	fout.close();
-	cout<<"written size"<<endl;
+	//cout<<"written size"<<endl;
 }
 
 void read_OrgList_size(){
@@ -507,8 +507,8 @@ void read_OrgList_size(){
 	fin >> OrgList_size;
 	  
 	fin.close();
-    cout<<"reading size"<<endl;
-    cout<<OrgList_size<<endl;
+    //cout<<"reading size"<<endl;
+    //cout<<OrgList_size<<endl;
 }
 
 void write_OrgList(){
@@ -731,7 +731,7 @@ void write_PostList_size(){
     fout << PostList_size;
     
 	fout.close();
-	cout<<"written size"<<endl;
+	//cout<<"written size"<<endl;
 }
 
 void read_PostList_size(){
@@ -742,8 +742,8 @@ void read_PostList_size(){
 	fin >> PostList_size;
 	  
 	fin.close();
-    cout<<"reading size"<<endl;
-    cout<<PostList_size<<endl;
+    //cout<<"reading size"<<endl;
+    //cout<<PostList_size<<endl;
 }
 
 void write_PostList(){
@@ -918,7 +918,7 @@ void write_UserList_size(){
     fout << UserList_size;
     
 	fout.close();
-	cout<<"written size"<<endl;
+	//cout<<"written size"<<endl;
 
 }
 void read_UserList_size(){
@@ -929,8 +929,8 @@ void read_UserList_size(){
 	fin >> UserList_size;
 	  
 	fin.close();
-    cout<<"reading size"<<endl;
-    cout<<UserList_size<<endl;
+    //cout<<"reading size"<<endl;
+    //cout<<UserList_size<<endl;
 
 }
 void write_UserList(){

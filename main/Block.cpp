@@ -110,6 +110,21 @@ long BlockChain_size = 0;
     {
         return Transactions_in_the_Block[i].get_transaction_msg();
     }
+	
+	string Block::get_sender_of_transaction_from_block(int i)
+    {
+        return Transactions_in_the_Block[i].get_sender();
+    }
+	
+	string Block::get_reciever_of_transaction_from_block(int i)
+    {
+        return Transactions_in_the_Block[i].get_reciever();
+    }
+	
+	long long Block::get_amount_of_transaction_from_block(int i)
+    {
+        return Transactions_in_the_Block[i].get_amount();
+    }
 
     long Block::get_transaction_ID_from_block(int i)
     {
@@ -160,9 +175,14 @@ void display_Blockchain()
                 
             for(int j=0; j<BlockChain[i].get_No_of_Transactions_in_Block(); j++)
             {
-                cout << "\n\t Transaction No : " << j+1
-                     << "\n\t Transaction ID : " << BlockChain[i].get_transaction_ID_from_block(j)
-                     << "\n\t Transaction Message : " << BlockChain[i].get_transaction_msg_from_block(j) << endl;
+                // cout << "\n\t Transaction No : " << j+1;
+                cout << "\n\t Transaction ID : " << BlockChain[i].get_transaction_ID_from_block(j)
+					 << "\n\t Sender : " << BlockChain[i].get_sender_of_transaction_from_block(j)
+					 << "\n\t Reciever : " << BlockChain[i].get_reciever_of_transaction_from_block(j)
+					 << "\n\t Amount : " << BlockChain[i].get_amount_of_transaction_from_block(j)
+					 // << "\n\t Sender's Public Key : " << BlockChain[i].get_sender_of_transaction_from_block(j)
+                     // << "\n\t Transaction Message : " << BlockChain[i].get_transaction_msg_from_block(j) 
+					 << endl;
             }
             
             cout<<"\n } ";
