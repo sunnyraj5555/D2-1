@@ -136,12 +136,18 @@ void user_init(){
     add_user_to_list(u1);
 
     //user 2
-
     User u2;
     u2.set_User_ID();
     u2.set_user_details("Aryan", "7521003731", "aryan@gmail.com", "aryan");
     generate_keys(u2);   // this will be in encryption header file
     add_user_to_list(u2);
+
+    //user 3
+    User u3;
+    u3.set_User_ID();
+    u3.set_user_details("Sunny", "8107706727", "sunny@gmail.com", "sunny");
+    generate_keys(u3);   // this will be in encryption header file
+    add_user_to_list(u3);
 }
 
 // ================= To Check Phone Number =================
