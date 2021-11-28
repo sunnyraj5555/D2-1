@@ -127,6 +127,15 @@ void admin_init()
     cout << "\n !!Admin Created!! " << endl;
 }
 
+void user_init(){
+    //user 1
+    User u1;
+    u1.set_User_ID();
+    u1.set_user_details("Sekhar", "9773526288", "sekhar@gmail.com", "sekhar");
+    generate_keys(u1);   // this will be in encryption header file
+    add_user_to_list(u1);
+}
+
 // ================= To Check Phone Number =================
 const int MAX = 10;
  

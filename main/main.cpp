@@ -68,6 +68,7 @@ int main()
     create_Genesis_Block();
     intitialise_OrgList();
     admin_init();
+    user_init();
     
     ClearOS();
     
