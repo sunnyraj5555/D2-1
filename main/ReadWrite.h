@@ -22,8 +22,24 @@ using namespace std;
 #ifndef READWRITE_H
 #define READWRITE_H
 
+bool Is_empty(ifstream& pFile);
+void Check_UserList_size();
+    void Check_UserList();
+    void Check_Transaction_Ids();
+    void Check_PostList_size();
+    void Check_PostList();
+    
+    void Check_OrgList_size();
+    void Check_OrgList();
+    
+    void Check_Mempool_size();
+void Check_Ledger_size();
+void Check_BlockChain_size();
+
+
 void read_all();
 void write_all();
+void file_init();
 
 // FILE HANDELING FUNCTIONS
 

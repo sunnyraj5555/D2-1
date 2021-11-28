@@ -11,8 +11,191 @@
 
 using namespace std;
 
+bool Is_empty(ifstream& pFile)
+{
+    return pFile.peek() == ifstream::traits_type::eof();
+}
+
+
+void Check_UserList()
+{
+    ofstream f2;
+    ifstream f1("UserList.txt");
+    string temp = "1~Somasekhar~9773526288~sekhar@gmail.com~sekhar~575~177229151~943690563~100000~\n";
+    string temp1 = "2~Aryan Mukerji~7379587258~aryan@gmail.com~aryan~871~785414831~943690563~100000~\n";
+    string temp2 = "3~Sunny Raj~8107706727~sunny@gmail.com~sunny~87~824277767~943690563~100000~\n";
+    string temp3 = "4~Tanishka Vaswani~8130112876~tanishkavaswani1@gmail.com~tanishka21~341~572789717~943690563~100000~\n";
+    if(Is_empty(f1) == true)
+    {
+        f2.open("UserList.txt");
+        f2 << temp;   // int i = -1;
+        f2 << temp1;   // int i = -1;
+        f2 << temp2;   // int i = -1;
+        f2 << temp3;   // int i = -1;
+    }
+    
+    f2.close();
+    f1.close();
+}
+
+void Check_UserList_size()
+{
+    ofstream f2;
+    ifstream f1("UserList_size.txt");
+    
+    if(Is_empty(f1) == true)
+    {
+        f2.open("UserList_size.txt");
+        f2 << 4;
+    }
+    
+    f2.close();
+    f1.close();
+}
+
+void Check_Transaction_Ids()
+{
+    ofstream f2;
+    ifstream f1("Transaction_Ids.txt");
+    
+    if(Is_empty(f1) == true)
+    {
+        f2.open("Transaction_Ids.txt");
+        f2 << 0;
+    }
+    
+    f2.close();
+    f1.close();
+}
+
+void Check_PostList_size()
+{
+    ofstream f2;
+    ifstream f1("PostList_size.txt");
+    
+    if(Is_empty(f1) == true)
+    {
+        f2.open("PostList_size.txt");
+        f2 << 2;
+    }
+    
+    f2.close();
+    f1.close();
+}
+
+void Check_PostList()
+{
+    ofstream f2;
+    ifstream f1("PostList.txt");
+    
+    string temp = "1~5000~0~5000~Suffering from Covid-19!~Please Donate! Need Help!~2~Aryan~Surya~1~Nazareth Hospital~Prayagraj, Uttar Pradesh~7393254831\n";
+    string temp1 = "2~100000~0~100000~Cancer Patient~Please Donate as much as you can, my brother is taking cancer treatment! Need Help!~1~Somasekhar~Ramesh~1~Nazareth Hospital~Prayagraj, Uttar Pradesh~7393254831\n";
+    
+    if(Is_empty(f1) == true)
+    {
+        f2.open("PostList.txt");
+        f2 << temp;   // int i = -1;
+        f2 << temp1;   // int i = -1;
+    }
+    
+    f2.close();
+    f1.close();
+}
+
+void Check_OrgList_size()
+{
+    ofstream f2;
+    ifstream f1("OrgList_size.txt");
+    
+    if(Is_empty(f1) == true)
+    {
+        f2.open("OrgList_size.txt");
+        f2 << 4;
+    }
+    
+    f2.close();
+    f1.close();
+}
+
+void Check_OrgList()
+{
+    ofstream f2;
+    ifstream f1("OrgList.txt");
+    string temp = "1~1~Nazareth Hospital~Prayagraj, Uttar Pradesh~7393254831\n";
+    string temp1 = "2~2~Medanta Medicity~Gurugram, Haryana~8527690666\n";
+    string temp2 = "3~3~Priti Hospital~Prayagraj, Uttar Pradesh~6393283820\n";
+    string temp3 = "4~4~Lalitha Hospital~New Delhi, Delhi~9811898880\n";
+    if(Is_empty(f1) == true)
+    {
+        f2.open("OrgList.txt");
+        f2 << temp;   // int i = -1;
+        f2 << temp1;   // int i = -1;
+        f2 << temp2;   // int i = -1;
+        f2 << temp3;   // int i = -1;
+    }
+    
+    f2.close();
+    f1.close();
+}
+
+void Check_Mempool_size()
+{
+    ofstream f2;
+    ifstream f1("Mempool_size.txt");
+    
+    if(Is_empty(f1) == true)
+    {
+        f2.open("Mempool_size.txt");
+        f2 << 0;
+    }
+    
+    f2.close();
+    f1.close();
+}
+
+void Check_Ledger_size()
+{
+    ofstream f2;
+    ifstream f1("Ledger_size.txt");
+    
+    if(Is_empty(f1) == true)
+    {
+        f2.open("Ledger_size.txt");
+        f2 << 0;
+    }
+    
+    f2.close();
+    f1.close();
+}
+
+void Check_BlockChain_size()
+{
+    ofstream f2;
+    ifstream f1("BlockChain_size.txt");
+    
+    if(Is_empty(f1) == true)
+    {
+        f2.open("BlockChain_size.txt");
+        f2 << 1;
+    }
+    
+    f2.close();
+    f1.close();
+}
+
 void file_init(){
-    // will check if the files are not initalised to values.
+    Check_UserList_size();
+    Check_UserList();
+    Check_Transaction_Ids();
+    Check_PostList_size();
+    Check_PostList();
+    
+    Check_OrgList_size();
+    Check_OrgList();
+    
+    Check_Mempool_size();
+    Check_Ledger_size();
+    Check_BlockChain_size();
 }
 
 void read_all(){
