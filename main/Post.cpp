@@ -256,9 +256,22 @@ void post_init()
                       OrgList[0].get_org_address(), 
                       OrgList[0].get_org_phone_number());
     
-    p.set_user_details(3, "Ramesh", "Surya");
-    p.set_post_details("Suffering from Covid-19!", "PLease Donate! Need Help!");
+    p.set_user_details(2, "Aryan", "Surya");
+    p.set_post_details("Suffering from Covid-19!", "Please Donate! Need Help!");
     p.set_amount(5000);
 
     add_post_to_list(p);
+
+    Post p1;
+    p1.set_Post_ID();
+    p1.set_org_details(OrgList[0].get_Org_ID(), 
+                      OrgList[0].get_org_name(), 
+                      OrgList[0].get_org_address(), 
+                      OrgList[0].get_org_phone_number());
+    
+    p1.set_user_details(1, "Somasekhar", "Ramesh");
+    p1.set_post_details("Cancer Patient", "Please Donate as much as you can, my brother is taking cancer treatment! Need Help!");
+    p1.set_amount(100000);
+
+    add_post_to_list(p1);
 }
