@@ -71,7 +71,7 @@ int main()
     user_init();
     
     ClearOS();
-    
+    file_init();
     read_all();
 
     main_menu();
