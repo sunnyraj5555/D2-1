@@ -9,6 +9,8 @@
 #include <stdlib.h>
 #include <time.h>
 #include <string.h>
+#include <iostream>
+
 #include "Person.h"
 
 #define ACCURACY 5
