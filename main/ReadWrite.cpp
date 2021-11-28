@@ -117,6 +117,27 @@ void Check_OrgList_size()
     f1.close();
 }
 
+void Check_OrgList()
+{
+    ofstream f2;
+    ifstream f1("OrgList.txt");
+    string temp = "1~1~Nazareth Hospital~Prayagraj, Uttar Pradesh~7393254831\n";
+    string temp1 = "2~2~Medanta Medicity~Gurugram, Haryana~8527690666\n";
+    string temp2 = "3~3~Priti Hospital~Prayagraj, Uttar Pradesh~6393283820\n";
+    string temp3 = "4~4~Lalitha Hospital~New Delhi, Delhi~9811898880\n";
+    if(Is_empty(f1) == true)
+    {
+        f2.open("OrgList.txt");
+        f2 << temp;   // int i = -1;
+        f2 << temp1;   // int i = -1;
+        f2 << temp2;   // int i = -1;
+        f2 << temp3;   // int i = -1;
+    }
+    
+    f2.close();
+    f1.close();
+}
+
 void file_init(){
     // will check if the files are not initalised to values.
 }
