@@ -9,20 +9,19 @@
 #include <stdlib.h>
 #include <time.h>
 #include <string.h>
-#include <iostream>
-#include <fstream>
-
 #include "Person.h"
-#include "main.h"
 
-using namespace std;
-
+#define ACCURACY 5
+#define SINGLE_MAX 10000
+#define EXPONENT_MAX 1000
 #define BUF_SIZE 1024
 
-int modpow(long long a, long long b, int c) 
+/*
+ * Computes a^b mod c
+ */
+int modpow2(long long a, long long b, int c) 
 {
 	int res = 1;
-	
 	while(b > 0) 
 	{
 		/* Need long multiplication else this will overflow... */
@@ -47,6 +46,7 @@ int readFile(FILE* fd, char** buffer, int bytes)
 {
 	int len = 0, cap = BUF_SIZE, r;
 	char buf[BUF_SIZE];
+	
 	*buffer = (char*)malloc(BUF_SIZE * sizeof(char));
 	
 	while((r = fread(buf, sizeof(char), BUF_SIZE, fd)) > 0) 
@@ -71,6 +71,7 @@ int readFile(FILE* fd, char** buffer, int bytes)
 	}
 	
 	while(len % bytes != 0);
+	
 	return len;
 }
 
@@ -79,7 +80,7 @@ int readFile(FILE* fd, char** buffer, int bytes)
  */
 int encode(int m, int e, int n) 
 {
-	return modpow(m, e, n);
+	return modpow2(m, e, n);
 }
 
 /*
@@ -87,7 +88,7 @@ int encode(int m, int e, int n)
  */
 int decode(int c, int d, int n) 
 {
-	return modpow(c, d, n);
+	return modpow2(c, d, n);
 }
 
 /*
@@ -105,11 +106,12 @@ int* encodeMessage(int len, int bytes, char* message, int exponent, int modulus)
 	{
 		x = 0;
 		for(j = 0; j < bytes; j++) x += message[i + j] * (1 << (7 * j));
+		
 		encoded[i/bytes] = encode(x, exponent, modulus);
 		
-		#ifndef MEASURE
-			printf("%d ", encoded[i/bytes]);
-		#endif
+        #ifndef MEASURE
+		    printf("%d ", encoded[i/bytes]);
+        #endif
 	}
 	
 	return encoded;
@@ -124,6 +126,7 @@ int* decodeMessage(int len, int bytes, int* cryptogram, int exponent, int modulu
 {
 	int *decoded = (int*)malloc(len * bytes * sizeof(int));
 	int x, i, j;
+	
 	for(i = 0; i < len; i++) 
 	{
 		x = decode(cryptogram[i], exponent, modulus);
@@ -132,33 +135,35 @@ int* decodeMessage(int len, int bytes, int* cryptogram, int exponent, int modulu
 		{
 			decoded[i*bytes + j] = (x >> (7 * j)) % 128;
 			
-			#ifndef MEASURE
-				if(decoded[i*bytes + j] != '\0') printf("%c", decoded[i*bytes + j]);
-			#endif
+            #ifndef MEASURE
+			    if(decoded[i*bytes + j] != '\0') printf("%c", decoded[i*bytes + j]);
+            #endif
 		}
 	}
 	
 	return decoded;
 }
 
-int Encode(User &u)
+int EncodeDecode(User &user) 
 {
-    int e = u.get_User_Public_Key(), d = u.get_User_Private_Key(), n = u.get_User_EDFactor();
-    int bytes, len;
-	int *encoded;
+	int p, q, n, phi, e, d, bytes, len;
+	int *encoded, *decoded;
 	char *buffer;
 	FILE *f;
+	srand(time(NULL));
 
+	e = user.get_User_Public_Key();
+	d = user.get_User_Private_Key();
+	n = user.get_User_EDFactor();
+	
 	if(n >> 21) bytes = 3;
 	else if(n >> 14) bytes = 2;
 	else bytes = 1;	
-
-	// printf("Opening file \"EncodeDecode.txt\" for reading\n");
-	f = fopen("EncodeDecode.txt", "r");
+	
+	f = fopen("text.txt", "r");
 	
 	if(f == NULL) 
 	{
-		printf("Failed to open file \"EncodeDecode.txt\". Does it exist?\n");
 		return EXIT_FAILURE;
 	}
 	
@@ -167,40 +172,11 @@ int Encode(User &u)
 	
 	encoded = encodeMessage(len, bytes, buffer, e, n);
 	
-	return encoded;
-	
-	free(encoded);
-	free(buffer);
-}
-
-int Decode(User &u)
-{
-    int e = u.get_User_Public_Key(), d = u.get_User_Private_Key(), n = u.get_User_EDFactor();
-    int bytes, len;
-	int *decoded;
-	char *buffer;
-	FILE *f;
-
-	if(n >> 21) bytes = 3;
-	else if(n >> 14) bytes = 2;
-	else bytes = 1;	
-
-	// printf("Opening file \"EncodeDecode.txt\" for reading\n");
-	f = fopen("EncodeDecode.txt", "r");
-	
-	if(f == NULL) 
-	{
-		printf("Failed to open file \"EncodeDecode.txt\". Does it exist?\n");
-		return EXIT_FAILURE;
-	}
-	
-	len = readFile(f, &buffer, bytes); /* len will be a multiple of bytes, to send whole chunks */
-	fclose(f);
-	
 	decoded = decodeMessage(len/bytes, bytes, encoded, d, n);
 	
-	return encoded;
-	
+	free(encoded);
 	free(decoded);
 	free(buffer);
+	
+	return EXIT_SUCCESS;
 }
