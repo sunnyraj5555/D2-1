@@ -59,6 +59,7 @@ extern long Logged_User_ID;
 extern User Admin;
 
 void admin_init();
+void user_init();
 void create_user();
 void add_user_to_list(User &u);
 void display_UserList();
