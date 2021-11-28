@@ -11,6 +11,34 @@
 
 using namespace std;
 
+
+bool Is_empty(ifstream& pFile)
+{
+    return pFile.peek() == ifstream::traits_type::eof();
+}
+
+void Check_UserList()
+{
+    ofstream f2;
+    ifstream f1("UserList.txt");
+    string temp = "1~Somasekhar~9773526288~sekhar@gmail.com~sekhar~575~177229151~943690563~100000~\n";
+    string temp1 = "2~Aryan Mukerji~7379587258~aryan@gmail.com~aryan~871~785414831~943690563~100000~\n";
+    string temp2 = "3~Sunny Raj~8107706727~sunny@gmail.com~sunny~87~824277767~943690563~100000~\n";
+    string temp3 = "4~Tanishka Vaswani~8130112876~tanishkavaswani1@gmail.com~tanishka21~341~572789717~943690563~100000~\n";
+    if(Is_empty(f1) == true)
+    {
+        f2.open("UserList.txt");
+        f2 << temp;   // int i = -1;
+        f2 << temp1;   // int i = -1;
+        f2 << temp2;   // int i = -1;
+        f2 << temp3;   // int i = -1;
+    }
+    
+    f2.close();
+    f1.close();
+}
+
+
 void file_init(){
     // will check if the files are not initalised to values.
 }
