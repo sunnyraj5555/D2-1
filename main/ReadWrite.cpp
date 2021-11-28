@@ -138,6 +138,21 @@ void Check_OrgList()
     f1.close();
 }
 
+void Check_Mempool_size()
+{
+    ofstream f2;
+    ifstream f1("Mempool_size.txt");
+    
+    if(Is_empty(f1) == true)
+    {
+        f2.open("Mempool_size.txt");
+        f2 << 0;
+    }
+    
+    f2.close();
+    f1.close();
+}
+
 void file_init(){
     // will check if the files are not initalised to values.
 }
