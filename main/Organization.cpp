@@ -102,7 +102,7 @@ bool verify_org(long Org_ID)
     bool found=true;
     ifstream OrgFile("org_id.txt");
 
-    int a, decision=0;
+    long a, decision=0;
     
     while (OrgFile >> a)
     {
