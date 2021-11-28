@@ -99,14 +99,27 @@ void add_org_to_list(Organization &o)
 
 bool verify_org(long Org_ID)
 {
-    // for(in the predefined array of govt. ID's){
-    //     if(Org_ID == ID){
-    //         return true;
-    //     }
-    // }
-    // return false;
+    bool found=true;
+    ifstream OrgFile("org_id.txt");
+
+    long a, decision=0;
     
-    return true;    // just returning true for now
+    while (OrgFile >> a)
+    {
+        if(a==Org_ID)
+        {
+            decision=1;
+            break;
+        }
+
+    }
+
+    if(decision==1)
+        found=true;
+
+    else
+        found=false;
+    return found;
 }
 
 void create_org()
