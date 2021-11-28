@@ -17,9 +17,16 @@ using namespace std;
 #ifndef MAIN_H
 #define MAIN_H
 
+// In main.cpp
 void Title();
 void PressEnter();
 void ClearOS();
+
+// In Keys.cpp
 int keys(User &u);
+
+// In EncodeDecode.cpp
+int Encode(User &u);
+int Decode(User &u);
 
 #endif /* MAIN_H */
