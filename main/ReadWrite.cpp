@@ -11,11 +11,11 @@
 
 using namespace std;
 
-
 bool Is_empty(ifstream& pFile)
 {
     return pFile.peek() == ifstream::traits_type::eof();
 }
+
 
 void Check_UserList()
 {
