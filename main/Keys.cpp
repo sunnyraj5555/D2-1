@@ -13,6 +13,7 @@
 
 #include "Person.h"
 #include "main.h"
+#include "ReadWrite.h"
 
 using namespace std;
 
@@ -21,10 +22,7 @@ using namespace std;
 #define EXPONENT_MAX 1000
 #define BUF_SIZE 1024
 
-bool Is_empty(ifstream& pFile)
-{
-    return pFile.peek() == ifstream::traits_type::eof();
-}
+
 
 void Check_I()
 {
