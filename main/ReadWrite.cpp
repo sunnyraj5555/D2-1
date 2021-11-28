@@ -184,7 +184,18 @@ void Check_BlockChain_size()
 }
 
 void file_init(){
-    // will check if the files are not initalised to values.
+    Check_UserList_size();
+    Check_UserList();
+    Check_Transaction_Ids();
+    Check_PostList_size();
+    Check_PostList();
+    
+    Check_OrgList_size();
+    Check_OrgList();
+    
+    Check_Mempool_size();
+    Check_Ledger_size();
+    Check_BlockChain_size();
 }
 
 void read_all(){
