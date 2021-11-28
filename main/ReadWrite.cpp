@@ -68,6 +68,21 @@ void Check_Transaction_Ids()
     f1.close();
 }
 
+void Check_PostList_size()
+{
+    ofstream f2;
+    ifstream f1("PostList_size.txt");
+    
+    if(Is_empty(f1) == true)
+    {
+        f2.open("PostList_size.txt");
+        f2 << 2;
+    }
+    
+    f2.close();
+    f1.close();
+}
+
 void file_init(){
     // will check if the files are not initalised to values.
 }
