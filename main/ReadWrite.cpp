@@ -83,6 +83,25 @@ void Check_PostList_size()
     f1.close();
 }
 
+void Check_PostList()
+{
+    ofstream f2;
+    ifstream f1("PostList.txt");
+    
+    string temp = "1~5000~0~5000~Suffering from Covid-19!~Please Donate! Need Help!~2~Aryan~Surya~1~Nazareth Hospital~Prayagraj, Uttar Pradesh~7393254831\n";
+    string temp1 = "2~100000~0~100000~Cancer Patient~Please Donate as much as you can, my brother is taking cancer treatment! Need Help!~1~Somasekhar~Ramesh~1~Nazareth Hospital~Prayagraj, Uttar Pradesh~7393254831\n";
+    
+    if(Is_empty(f1) == true)
+    {
+        f2.open("PostList.txt");
+        f2 << temp;   // int i = -1;
+        f2 << temp1;   // int i = -1;
+    }
+    
+    f2.close();
+    f1.close();
+}
+
 void file_init(){
     // will check if the files are not initalised to values.
 }
