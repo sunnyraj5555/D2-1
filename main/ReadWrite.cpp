@@ -38,6 +38,20 @@ void Check_UserList()
     f1.close();
 }
 
+void Check_UserList_size()
+{
+    ofstream f2;
+    ifstream f1("UserList_size.txt");
+    
+    if(Is_empty(f1) == true)
+    {
+        f2.open("UserList_size.txt");
+        f2 << 4;
+    }
+    
+    f2.close();
+    f1.close();
+}
 
 void file_init(){
     // will check if the files are not initalised to values.
