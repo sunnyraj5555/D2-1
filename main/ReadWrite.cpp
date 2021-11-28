@@ -53,6 +53,21 @@ void Check_UserList_size()
     f1.close();
 }
 
+void Check_Transaction_Ids()
+{
+    ofstream f2;
+    ifstream f1("Transaction_Ids.txt");
+    
+    if(Is_empty(f1) == true)
+    {
+        f2.open("Transaction_Ids.txt");
+        f2 << 0;
+    }
+    
+    f2.close();
+    f1.close();
+}
+
 void file_init(){
     // will check if the files are not initalised to values.
 }
