@@ -153,6 +153,21 @@ void Check_Mempool_size()
     f1.close();
 }
 
+void Check_Ledger_size()
+{
+    ofstream f2;
+    ifstream f1("Ledger_size.txt");
+    
+    if(Is_empty(f1) == true)
+    {
+        f2.open("Ledger_size.txt");
+        f2 << 0;
+    }
+    
+    f2.close();
+    f1.close();
+}
+
 void file_init(){
     // will check if the files are not initalised to values.
 }
