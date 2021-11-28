@@ -12,6 +12,7 @@
 #include <fstream>
 
 #include "Person.h"
+#include "main.h"
 
 using namespace std;
 
