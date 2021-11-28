@@ -168,6 +168,21 @@ void Check_Ledger_size()
     f1.close();
 }
 
+void Check_BlockChain_size()
+{
+    ofstream f2;
+    ifstream f1("BlockChain_size.txt");
+    
+    if(Is_empty(f1) == true)
+    {
+        f2.open("BlockChain_size.txt");
+        f2 << 1;
+    }
+    
+    f2.close();
+    f1.close();
+}
+
 void file_init(){
     // will check if the files are not initalised to values.
 }
