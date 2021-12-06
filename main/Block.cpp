@@ -142,7 +142,7 @@ void create_Genesis_Block()
 // this function will be encryption / hashing header file where all other functions also exist
 string create_block_hash(Block &b)
 {
-    return "hash1234";
+    return Object_to_SHA(b);
 }
 
 void add_Block_to_BlockChain(Block &b)
