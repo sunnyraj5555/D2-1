@@ -9,7 +9,9 @@
 
 #include <iostream>
 #include <cstring>
+
 #include "Person.h"
+#include "Block.h"
 
 using namespace std;
 #define N 100
@@ -24,5 +26,9 @@ void ClearOS();
 
 // In Keys.cpp
 int keys(User &u);
+
+// In SHA.cpp
+string Object_to_SHA(Block a);
+string String_to_SHA(string a);
 
 #endif /* MAIN_H */
