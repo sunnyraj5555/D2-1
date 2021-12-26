@@ -8,6 +8,7 @@ Our project, D2: Blockchain Based Secure Donation System (where D2 is the abbrev
 - **[@Sunny Raj](https://github.com/sunnyraj5555)**
 - **[@M SomaSekhar](https://github.com/sekhar76405)**
 - **[@Tanishka Vashwani](https://github.com/Tani21)**
+- - **[@Aryan Mukerji](https://github.com/AryanMukerji)**
 
 
 ## Our Objective
